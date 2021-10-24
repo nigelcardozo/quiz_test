@@ -1,4 +1,8 @@
 {
   "appTitle": "Quiz Test",
-  "bodyText": "Hello World"
+  "bodyText": "Hello World",
+  "firstRoute": "First Route",
+  "secondRoute": "Second Route",
+  "openRoute": "Open Route",
+  "goBack": "Go Back"
 }

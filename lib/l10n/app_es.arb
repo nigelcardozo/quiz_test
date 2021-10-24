@@ -1,4 +1,8 @@
 {
   "appTitle": "Prueba",
-  "bodyText": "Hola Mundo"
+  "bodyText": "Hola Mundo",
+  "firstRoute": "Primera Ruta",
+  "secondRoute": "Segunda Ruta",
+  "openRoute": "Ruta Abierta",
+  "goBack": "Regresa"
 }
