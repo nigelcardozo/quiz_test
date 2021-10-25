@@ -9,25 +9,61 @@ class MainMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            //title: Text('First Route'),
-            title: Text(AppLocalizations.of(context)!.firstRoute)),
-        body: Column(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+          child: Center(
+        child: Column(
           children: <Widget>[
-            Expanded(
-              // child: FittedBox(
-              //   fit: BoxFit.contain, // otherwise the logo will be tiny
-              //   child: Image(image: AssetImage('assets/images/basiclogo.png')),
-              // ),
-              child: Image(image: AssetImage('assets/images/basiclogo.png')),
+            // Logo Spacer
+            Flexible(
+                child: FractionallySizedBox(
+              heightFactor: 0.2,
+            )),
+
+            Flexible(
+              child: FractionallySizedBox(
+                widthFactor: 0.8,
+                child: Image(image: AssetImage('assets/images/quizlogo.png')),
+              ),
             ),
-            ElevatedButton(
-              child: Text(AppLocalizations.of(context)!.menuPlay),
-              onPressed: () {
-                print('Pressed');
-              },
-            ),
+
+            // Menu Button Spacer
+            Flexible(
+                child: FractionallySizedBox(
+              heightFactor: 0.8,
+            )),
+
+            Flexible(
+                child: FractionallySizedBox(
+              widthFactor: 0.8,
+              heightFactor: 0.4,
+              child: ElevatedButton(
+                child: Text(AppLocalizations.of(context)!.menuPlay),
+                onPressed: () {
+                  print('Pressed');
+                },
+              ),
+            )),
+
+            Flexible(
+                child: FractionallySizedBox(
+              heightFactor: 0.2,
+            )),
+
+            Flexible(
+                child: FractionallySizedBox(
+              widthFactor: 0.8,
+              heightFactor: 0.4,
+              child: ElevatedButton(
+                child: Text(AppLocalizations.of(context)!.menuAbout),
+                onPressed: () {
+                  print('Pressed');
+                },
+              ),
+            ))
           ],
-        ));
+        ),
+      )),
+    );
   }
 }
