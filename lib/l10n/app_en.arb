@@ -4,5 +4,7 @@
   "firstRoute": "First Route",
   "secondRoute": "Second Route",
   "openRoute": "Open Route",
-  "goBack": "Go Back"
+  "goBack": "Go Back",
+  "menuPlay": "Play",
+  "menuAbout": "About"
 }

@@ -4,5 +4,7 @@
   "firstRoute": "Primera Ruta",
   "secondRoute": "Segunda Ruta",
   "openRoute": "Ruta Abierta",
-  "goBack": "Regresa"
+  "goBack": "Regresa",
+  "menuPlay": "Juego",
+  "menuAbout": "Sobre"
 }
