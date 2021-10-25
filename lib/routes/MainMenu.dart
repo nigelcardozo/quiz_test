@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/routes/SecondRoute.dart';
 
 class MainMenu extends StatelessWidget {
   const MainMenu({Key? key}) : super(key: key);
@@ -14,56 +12,47 @@ class MainMenu extends StatelessWidget {
           child: Center(
         child: Column(
           children: <Widget>[
-            // Logo Spacer
-            Flexible(
-                child: FractionallySizedBox(
-              heightFactor: 0.2,
-            )),
-
-            Flexible(
-              child: FractionallySizedBox(
-                widthFactor: 0.8,
-                child: Image(image: AssetImage('assets/images/quizlogo.png')),
-              ),
-            ),
-
-            // Menu Button Spacer
-            Flexible(
-                child: FractionallySizedBox(
-              heightFactor: 0.8,
-            )),
-
-            Flexible(
-                child: FractionallySizedBox(
-              widthFactor: 0.8,
-              heightFactor: 0.4,
-              child: ElevatedButton(
-                child: Text(AppLocalizations.of(context)!.menuPlay),
-                onPressed: () {
-                  print('Pressed');
-                },
-              ),
-            )),
-
-            Flexible(
-                child: FractionallySizedBox(
-              heightFactor: 0.2,
-            )),
-
-            Flexible(
-                child: FractionallySizedBox(
-              widthFactor: 0.8,
-              heightFactor: 0.4,
-              child: ElevatedButton(
-                child: Text(AppLocalizations.of(context)!.menuAbout),
-                onPressed: () {
-                  print('Pressed');
-                },
-              ),
-            ))
+            generateHeightSpacer(0.2),
+            generateLogo(0.8),
+            generateHeightSpacer(0.8),
+            generateMenuButton(
+                0.8, 0.4, AppLocalizations.of(context)!.menuPlay),
+            generateHeightSpacer(0.2),
+            generateMenuButton(
+                0.8, 0.4, AppLocalizations.of(context)!.menuAbout),
           ],
         ),
       )),
     );
   }
+}
+
+Flexible generateHeightSpacer(double height) {
+  return Flexible(
+      child: FractionallySizedBox(
+    heightFactor: height,
+  ));
+}
+
+Flexible generateLogo(double width) {
+  return Flexible(
+    child: FractionallySizedBox(
+      widthFactor: width,
+      child: Image(image: AssetImage('assets/images/quizlogo.png')),
+    ),
+  );
+}
+
+Flexible generateMenuButton(double width, double height, String menuText) {
+  return Flexible(
+      child: FractionallySizedBox(
+    widthFactor: width,
+    heightFactor: height,
+    child: ElevatedButton(
+      child: Text(menuText),
+      onPressed: () {
+        print('Pressed');
+      },
+    ),
+  ));
 }
