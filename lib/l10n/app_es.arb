@@ -8,5 +8,7 @@
   "menuPlay": "Juego",
   "menuAbout": "Sobre",
   "menuLevel": "Nivel",
-  "titleSelectLevel": "Seleccione un nivel"
+  "titleSelectLevel": "Seleccione un nivel",
+  "titleAboutQuiz": "Acerca Quiz",
+  "aboutQuizText": "Quiz. Una aplicación de muestra de Flutter de Nigel Cardozo"
 }

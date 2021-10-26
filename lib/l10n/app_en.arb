@@ -8,5 +8,7 @@
   "menuPlay": "Play",
   "menuAbout": "About",
   "menuLevel": "Level",
-  "titleSelectLevel": "Select a Level"
+  "titleSelectLevel": "Select a Level",
+  "titleAboutQuiz": "About Quiz",
+  "aboutQuizText": "Quiz. A sample Flutter app by Nigel Cardozo"
 }
