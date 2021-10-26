@@ -6,5 +6,6 @@
   "openRoute": "Open Route",
   "goBack": "Go Back",
   "menuPlay": "Play",
-  "menuAbout": "About"
+  "menuAbout": "About",
+  "menuLevel": "Level"
 }

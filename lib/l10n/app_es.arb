@@ -6,5 +6,6 @@
   "openRoute": "Ruta Abierta",
   "goBack": "Regresa",
   "menuPlay": "Juego",
-  "menuAbout": "Sobre"
+  "menuAbout": "Sobre",
+  "menuLevel": "Nivel"
 }
