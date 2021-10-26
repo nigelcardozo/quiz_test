@@ -51,7 +51,10 @@ Card generateCard(
 ListTile generateListTile(List<String> entries, int index) {
   return ListTile(
     leading: LayoutBuilder(builder: (context, constraint) {
-      return new Icon(Icons.access_alarms, size: constraint.biggest.height);
+      if (isLevelLocked(index + 1)) {
+        return generateLockedIcon(constraint);
+      }
+      return generateUnlockedIcon(constraint);
     }),
     title: Text(
       entries[index],
@@ -66,6 +69,20 @@ ListTile generateListTile(List<String> entries, int index) {
       print('Pressed $index');
     },
   );
+}
+
+// FOR NOW ALL LEVELS BUT THE FIRST ARE MARKED AS LOCKED
+bool isLevelLocked(int levelNumber) {
+  if (levelNumber >= 1 && levelNumber <= 3) return false;
+  return true;
+}
+
+Icon generateLockedIcon(BoxConstraints constraint) {
+  return new Icon(Icons.lock, size: constraint.biggest.height);
+}
+
+Icon generateUnlockedIcon(BoxConstraints constraint) {
+  return new Icon(Icons.lock_open, size: constraint.biggest.height);
 }
 
 Flexible generateHeightSpacer(double height) {
