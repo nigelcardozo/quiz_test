@@ -7,5 +7,6 @@
   "goBack": "Go Back",
   "menuPlay": "Play",
   "menuAbout": "About",
-  "menuLevel": "Level"
+  "menuLevel": "Level",
+  "titleSelectLevel": "Select a Level"
 }

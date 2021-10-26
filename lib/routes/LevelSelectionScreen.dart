@@ -17,6 +17,9 @@ class LevelSelectionScreen extends StatelessWidget {
         maxLevelNumber);
 
     return Scaffold(
+      appBar: AppBar(
+          //title: Text('First Route'),
+          title: Text(AppLocalizations.of(context)!.titleSelectLevel)),
       backgroundColor: Colors.white,
       body: SafeArea(child: generateListView(levelList)),
     );

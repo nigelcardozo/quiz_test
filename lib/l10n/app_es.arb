@@ -7,5 +7,6 @@
   "goBack": "Regresa",
   "menuPlay": "Juego",
   "menuAbout": "Sobre",
-  "menuLevel": "Nivel"
+  "menuLevel": "Nivel",
+  "titleSelectLevel": "Seleccione un nivel"
 }
