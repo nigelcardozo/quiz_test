@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quiz_test/routes/FirstRoute.dart';
 import 'package:quiz_test/routes/LevelSelectionScreen.dart';
+
+typedef LevelSelectionScreenCallBack = LevelSelectionScreen Function();
+typedef FirstRouteCallBack = FirstRoute Function();
 
 class MainMenu extends StatelessWidget {
   const MainMenu({Key? key}) : super(key: key);
@@ -16,11 +20,11 @@ class MainMenu extends StatelessWidget {
             generateHeightSpacer(0.2),
             generateLogo(0.8),
             generateHeightSpacer(0.8),
-            generateMenuButton(
-                0.8, 0.4, AppLocalizations.of(context)!.menuPlay),
+            generateMenuButton(context, 0.8, 0.4,
+                AppLocalizations.of(context)!.menuPlay, LevelSelectionScreen()),
             generateHeightSpacer(0.2),
-            generateMenuButton(
-                0.8, 0.4, AppLocalizations.of(context)!.menuAbout),
+            generateMenuButton(context, 0.8, 0.4,
+                AppLocalizations.of(context)!.menuAbout, FirstRoute()),
           ],
         ),
       )),
@@ -44,7 +48,8 @@ Flexible generateLogo(double width) {
   );
 }
 
-Flexible generateMenuButton(double width, double height, String menuText) {
+Flexible generateMenuButton(BuildContext context, double width, double height,
+    String menuText, Widget widget) {
   return Flexible(
       child: FractionallySizedBox(
     widthFactor: width,
@@ -52,7 +57,10 @@ Flexible generateMenuButton(double width, double height, String menuText) {
     child: ElevatedButton(
       child: Text(menuText),
       onPressed: () {
-        print('Pressed');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => widget),
+        );
       },
     ),
   ));
