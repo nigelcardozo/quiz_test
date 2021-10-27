@@ -11,6 +11,7 @@ class LevelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Image> imageList = generateImageList(level);
+    List<String> answerList = generateAnswerList(level);
 
     return Scaffold(
       appBar: AppBar(
@@ -19,10 +20,75 @@ class LevelScreen extends StatelessWidget {
               this.level.toString())),
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: generateGridView(imageList, axisCountSize),
+        child: generateGridView(imageList, answerList, axisCountSize),
       ),
     );
   }
+}
+
+List<String> generateAnswerList(int level) {
+  List<String> answerList = <String>[];
+
+  if (level == 1) {
+    answerList.add('mickey');
+    answerList.add('minnie');
+    answerList.add('goofy');
+    answerList.add('pluto');
+    answerList.add('ariel');
+    answerList.add('jasmine');
+    answerList.add('maleficent');
+    answerList.add('eeyore');
+    answerList.add('pooh');
+    answerList.add('tigger');
+    answerList.add('alice');
+    answerList.add('dumbo');
+    answerList.add('robin');
+    answerList.add('bambi');
+    answerList.add('thumper');
+    answerList.add('todd');
+    answerList.add('aladdin');
+    answerList.add('copper');
+  } else if (level == 2) {
+    answerList.add('cruella');
+    answerList.add('darth');
+    answerList.add('stitch');
+    answerList.add('olaf');
+    answerList.add('anna');
+    answerList.add('lilo');
+    answerList.add('ralph');
+    answerList.add('forky');
+    answerList.add('buzz');
+    answerList.add('r2d2');
+    answerList.add('homer');
+    answerList.add('lisa');
+    answerList.add('krusty');
+    answerList.add('kermit');
+    answerList.add('gonzo');
+    answerList.add('jack');
+    answerList.add('mulan');
+    answerList.add('nemo');
+  } else if (level == 3) {
+    answerList.add('mushu');
+    answerList.add('bolt');
+    answerList.add('boo');
+    answerList.add('jessie');
+    answerList.add('mater');
+    answerList.add('russell');
+    answerList.add('tinkerbell');
+    answerList.add('beast');
+    answerList.add('gaston');
+    answerList.add('rapunzel');
+    answerList.add('marge');
+    answerList.add('beaker');
+    answerList.add('animal');
+    answerList.add('moana');
+    answerList.add('wendy');
+    answerList.add('mowgli');
+    answerList.add('marie');
+    answerList.add('remy');
+  }
+
+  return answerList;
 }
 
 List<Image> generateImageList(int level) {
@@ -90,12 +156,13 @@ List<Image> generateImageList(int level) {
   return imageList;
 }
 
-GridView generateGridView(List<Image> imageList, int axisCountSize) {
+GridView generateGridView(
+    List<Image> imageList, List<String> answerList, int axisCountSize) {
   return GridView.builder(
       itemCount: imageList.length,
       gridDelegate: generateSliverGrid(axisCountSize),
       itemBuilder: (BuildContext context, int index) {
-        return generateImageCard(context, imageList, index);
+        return generateImageCard(context, imageList, answerList, index);
       });
 }
 
@@ -103,7 +170,8 @@ SliverGridDelegateWithFixedCrossAxisCount generateSliverGrid(int axisCount) {
   return SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: axisCount);
 }
 
-Card generateImageCard(BuildContext context, List<Image> imageList, int index) {
+Card generateImageCard(BuildContext context, List<Image> imageList,
+    List<String> answerList, int index) {
   return Card(
     child: new InkResponse(
       child: imageList[index],
@@ -113,7 +181,8 @@ Card generateImageCard(BuildContext context, List<Image> imageList, int index) {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => AnswerScreen(image: imageList[index])),
+              builder: (context) => AnswerScreen(
+                  image: imageList[index], answer: answerList[index])),
         );
       },
     ),
