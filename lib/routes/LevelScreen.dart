@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quiz_test/routes/AnswerScreen.dart';
 
 class LevelScreen extends StatelessWidget {
   final int level;
@@ -94,7 +95,7 @@ GridView generateGridView(List<Image> imageList, int axisCountSize) {
       itemCount: imageList.length,
       gridDelegate: generateSliverGrid(axisCountSize),
       itemBuilder: (BuildContext context, int index) {
-        return generateImageCard(imageList, index);
+        return generateImageCard(context, imageList, index);
       });
 }
 
@@ -102,12 +103,18 @@ SliverGridDelegateWithFixedCrossAxisCount generateSliverGrid(int axisCount) {
   return SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: axisCount);
 }
 
-Card generateImageCard(List<Image> imageList, int index) {
+Card generateImageCard(BuildContext context, List<Image> imageList, int index) {
   return Card(
     child: new InkResponse(
       child: imageList[index],
       onTap: () {
-        print(index);
+        print(imageList[index]);
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => AnswerScreen(image: imageList[index])),
+        );
       },
     ),
   );
