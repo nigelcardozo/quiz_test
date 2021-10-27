@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LevelScreen extends StatelessWidget {
+  final int level;
   final int axisCountSize = 3;
 
-  const LevelScreen({Key? key}) : super(key: key);
+  const LevelScreen({Key? key, required this.level}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<Image> imageList = generateImageList(1);
+    List<Image> imageList = generateImageList(level);
 
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.titleLevel)),

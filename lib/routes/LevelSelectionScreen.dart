@@ -20,7 +20,7 @@ class LevelSelectionScreen extends StatelessWidget {
           //title: Text('First Route'),
           title: Text(AppLocalizations.of(context)!.titleSelectLevel)),
       backgroundColor: Colors.white,
-      body: SafeArea(child: generateListView(LevelScreen(), levelList)),
+      body: SafeArea(child: generateListView(levelList)),
     );
   }
 }
@@ -35,24 +35,23 @@ List<String> generateLevelList(String menuTitle, int minLevel, int maxLevel) {
   return levelList;
 }
 
-ListView generateListView(Widget widget, List<String> entries) {
+ListView generateListView(List<String> entries) {
   return ListView.builder(
       padding: const EdgeInsets.all(40),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
-        return generateCard(context, widget, entries, index, Colors.lightGreen);
+        return generateCard(context, entries, index, Colors.lightGreen);
       });
 }
 
-Card generateCard(BuildContext context, Widget widget, List<String> entries,
-    int index, MaterialColor requestedColor) {
+Card generateCard(BuildContext context, List<String> entries, int index,
+    MaterialColor requestedColor) {
   return Card(
-      color: requestedColor,
-      child: generateListTile(context, widget, entries, index));
+      color: requestedColor, child: generateListTile(context, entries, index));
 }
 
 ListTile generateListTile(
-    BuildContext context, Widget widget, List<String> entries, int index) {
+    BuildContext context, List<String> entries, int index) {
   return ListTile(
     leading: LayoutBuilder(builder: (context, constraint) {
       if (isLevelLocked(index + 1)) {
@@ -74,7 +73,8 @@ ListTile generateListTile(
 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => widget),
+        MaterialPageRoute(
+            builder: (context) => LevelScreen(level: (index + 1))),
       );
     },
   );
