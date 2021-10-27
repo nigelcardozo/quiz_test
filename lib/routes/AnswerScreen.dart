@@ -52,10 +52,13 @@ Flexible generateTextField(double width) {
     child: FractionallySizedBox(
       widthFactor: width,
       child: TextField(
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-        ),
-      ),
+          autofocus: true,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+          onSubmitted: (String str) {
+            print('answer == ' + str.toLowerCase());
+          }),
     ),
   );
 }
