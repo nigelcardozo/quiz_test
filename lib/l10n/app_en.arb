@@ -10,5 +10,6 @@
   "menuLevel": "Level",
   "titleSelectLevel": "Select a Level",
   "titleAboutQuiz": "About Quiz",
+  "titleLevel": "Level",
   "aboutQuizText": "Quiz. A sample Flutter app by Nigel Cardozo"
 }

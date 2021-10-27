@@ -10,5 +10,6 @@
   "menuLevel": "Nivel",
   "titleSelectLevel": "Seleccione un nivel",
   "titleAboutQuiz": "Acerca Quiz",
+  "titleLevel": "Nivel",
   "aboutQuizText": "Quiz. Una aplicación de muestra de Flutter de Nigel Cardozo"
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quiz_test/routes/MainMenu.dart';
+import 'package:quiz_test/routes/LevelScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MainMenu(),
+      //home: MainMenu(),
       //home: LevelSelectionScreen(),
+      home: LevelScreen(),
     );
   }
 }

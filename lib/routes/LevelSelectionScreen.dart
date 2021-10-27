@@ -84,33 +84,3 @@ Icon generateLockedIcon(BoxConstraints constraint) {
 Icon generateUnlockedIcon(BoxConstraints constraint) {
   return new Icon(Icons.lock_open, size: constraint.biggest.height);
 }
-
-Flexible generateHeightSpacer(double height) {
-  return Flexible(
-      child: FractionallySizedBox(
-    heightFactor: height,
-  ));
-}
-
-Flexible generateLogo(double width) {
-  return Flexible(
-    child: FractionallySizedBox(
-      widthFactor: width,
-      child: Image(image: AssetImage('assets/images/quizlogo.png')),
-    ),
-  );
-}
-
-Flexible generateMenuButton(double width, double height, String menuText) {
-  return Flexible(
-      child: FractionallySizedBox(
-    widthFactor: width,
-    heightFactor: height,
-    child: ElevatedButton(
-      child: Text(menuText),
-      onPressed: () {
-        print('Pressed');
-      },
-    ),
-  ));
-}
