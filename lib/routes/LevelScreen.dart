@@ -12,7 +12,10 @@ class LevelScreen extends StatelessWidget {
     List<Image> imageList = generateImageList(level);
 
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.titleLevel)),
+      appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.titleLevel +
+              " " +
+              this.level.toString())),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: generateGridView(imageList, axisCountSize),
@@ -43,6 +46,44 @@ List<Image> generateImageList(int level) {
     imageList.add(Image(image: AssetImage('assets/images/levels/1/116.png')));
     imageList.add(Image(image: AssetImage('assets/images/levels/1/117.png')));
     imageList.add(Image(image: AssetImage('assets/images/levels/1/118.png')));
+  } else if (level == 2) {
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/201.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/202.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/203.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/204.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/205.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/206.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/207.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/208.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/209.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/210.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/211.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/212.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/213.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/214.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/215.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/216.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/217.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/2/218.png')));
+  } else if (level == 3) {
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/301.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/302.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/303.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/304.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/305.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/306.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/307.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/308.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/309.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/310.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/311.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/312.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/313.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/314.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/315.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/316.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/317.png')));
+    imageList.add(Image(image: AssetImage('assets/images/levels/3/318.png')));
   }
 
   return imageList;
