@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      //home: MainMenu(),
+      home: MainMenu(),
       //home: LevelSelectionScreen(),
-      home: LevelScreen(),
+      //home: LevelScreen(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quiz_test/routes/LevelScreen.dart';
 
 class LevelSelectionScreen extends StatelessWidget {
   final int minLevelNumber = 1;
@@ -19,7 +20,7 @@ class LevelSelectionScreen extends StatelessWidget {
           //title: Text('First Route'),
           title: Text(AppLocalizations.of(context)!.titleSelectLevel)),
       backgroundColor: Colors.white,
-      body: SafeArea(child: generateListView(levelList)),
+      body: SafeArea(child: generateListView(LevelScreen(), levelList)),
     );
   }
 }
@@ -34,21 +35,24 @@ List<String> generateLevelList(String menuTitle, int minLevel, int maxLevel) {
   return levelList;
 }
 
-ListView generateListView(List<String> entries) {
+ListView generateListView(Widget widget, List<String> entries) {
   return ListView.builder(
       padding: const EdgeInsets.all(40),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
-        return generateCard(entries, index, Colors.lightGreen);
+        return generateCard(context, widget, entries, index, Colors.lightGreen);
       });
 }
 
-Card generateCard(
-    List<String> entries, int index, MaterialColor requestedColor) {
-  return Card(color: requestedColor, child: generateListTile(entries, index));
+Card generateCard(BuildContext context, Widget widget, List<String> entries,
+    int index, MaterialColor requestedColor) {
+  return Card(
+      color: requestedColor,
+      child: generateListTile(context, widget, entries, index));
 }
 
-ListTile generateListTile(List<String> entries, int index) {
+ListTile generateListTile(
+    BuildContext context, Widget widget, List<String> entries, int index) {
   return ListTile(
     leading: LayoutBuilder(builder: (context, constraint) {
       if (isLevelLocked(index + 1)) {
@@ -67,6 +71,11 @@ ListTile generateListTile(List<String> entries, int index) {
     subtitle: Text('0 / 15', style: TextStyle(color: Colors.white70)),
     onTap: () {
       print('Pressed $index');
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => widget),
+      );
     },
   );
 }
