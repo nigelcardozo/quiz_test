@@ -8,12 +8,14 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          //title: Text('First Route'),
-          title: Text(AppLocalizations.of(context)!.titleAboutQuiz)),
+        title: Text(AppLocalizations.of(context)!.titleAboutQuiz),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
-          child:
-              Center(child: Text(AppLocalizations.of(context)!.aboutQuizText))),
+        child: Center(
+          child: Text(AppLocalizations.of(context)!.aboutQuizText),
+        ),
+      ),
     );
   }
 }

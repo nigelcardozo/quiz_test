@@ -1,64 +1,47 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quiz_test/routes/AboutScreen.dart';
 import 'package:quiz_test/routes/LevelSelectionScreen.dart';
+import 'package:quiz_test/utils/UiUtils.dart';
 
 class MainMenu extends StatelessWidget {
+  final double heightSpace = 0.2;
+  final double fractionalWidth = 0.8;
+  final double fractionalHeight = 0.4;
+
   const MainMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    UiUtils uiUtils = UiUtils();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
           child: Center(
         child: Column(
           children: <Widget>[
-            generateHeightSpacer(0.2),
-            generateLogo(0.8),
-            generateHeightSpacer(0.8),
-            generateMenuButton(context, 0.8, 0.4,
-                AppLocalizations.of(context)!.menuPlay, LevelSelectionScreen()),
-            generateHeightSpacer(0.2),
-            generateMenuButton(context, 0.8, 0.4,
-                AppLocalizations.of(context)!.menuAbout, AboutScreen()),
+            uiUtils.generateHeightSpacer(heightSpace),
+            uiUtils.generateLogo(fractionalWidth),
+            uiUtils.generateHeightSpacer(fractionalWidth),
+            uiUtils.generateMenuButton(
+                context,
+                fractionalWidth,
+                fractionalHeight,
+                AppLocalizations.of(context)!.menuPlay,
+                LevelSelectionScreen()),
+            uiUtils.generateHeightSpacer(heightSpace),
+            uiUtils.generateMenuButton(
+                context,
+                fractionalWidth,
+                fractionalHeight,
+                AppLocalizations.of(context)!.menuAbout,
+                AboutScreen()),
           ],
         ),
       )),
     );
   }
-}
-
-Flexible generateHeightSpacer(double height) {
-  return Flexible(
-      child: FractionallySizedBox(
-    heightFactor: height,
-  ));
-}
-
-Flexible generateLogo(double width) {
-  return Flexible(
-    child: FractionallySizedBox(
-      widthFactor: width,
-      child: Image(image: AssetImage('assets/images/quizlogo.png')),
-    ),
-  );
-}
-
-Flexible generateMenuButton(BuildContext context, double width, double height,
-    String menuText, Widget widget) {
-  return Flexible(
-      child: FractionallySizedBox(
-    widthFactor: width,
-    heightFactor: height,
-    child: ElevatedButton(
-      child: Text(menuText),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => widget),
-        );
-      },
-    ),
-  ));
 }
