@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/routes/AnswerScreen.dart';
+import 'package:quiz_test/answer/ui/AnswerScreen.dart';
 
-class LevelScreen extends StatelessWidget {
+class LevelScreen extends StatefulWidget {
   final int level;
-  final int axisCountSize = 3;
-  List<Image> imageList = [];
-  List<String> answerList = [];
 
   LevelScreen({Key? key, required this.level}) : super(key: key);
 
   @override
+  _LevelScreenState createState() => _LevelScreenState();
+}
+
+class _LevelScreenState extends State<LevelScreen> {
+  final int axisCountSize = 3;
+  List<Image> imageList = [];
+  List<String> answerList = [];
+
+  @override
   Widget build(BuildContext context) {
-    imageList = _generateImageList(level);
-    answerList = _generateAnswerList(level);
+    imageList = _generateImageList(widget.level);
+    answerList = _generateAnswerList(widget.level);
 
     return Scaffold(
-      appBar: AppBar(title: Text(_getTitle(context, level))),
+      appBar: AppBar(title: Text(_getTitle(context, widget.level))),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: _generateGridView(imageList, answerList, axisCountSize),
@@ -64,7 +70,6 @@ class LevelScreen extends StatelessWidget {
     );
   }
 
-// ToDo - Replace with JSON or a repository
   List<String> _generateAnswerList(int level) {
     List<String> answerList = <String>[];
 
@@ -130,7 +135,6 @@ class LevelScreen extends StatelessWidget {
     return answerList;
   }
 
-// ToDo - Replace with JSON or a repository
   List<Image> _generateImageList(int level) {
     List<Image> imageList = <Image>[];
 

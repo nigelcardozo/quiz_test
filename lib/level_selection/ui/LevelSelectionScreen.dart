@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/routes/LevelScreen.dart';
+import 'package:quiz_test/level/ui/LevelScreen.dart';
 
 class LevelSelectionScreen extends StatelessWidget {
   final int minLevelNumber = 1;

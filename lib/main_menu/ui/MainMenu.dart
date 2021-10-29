@@ -2,8 +2,8 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/routes/AboutScreen.dart';
-import 'package:quiz_test/routes/LevelSelectionScreen.dart';
+import 'package:quiz_test/about/ui/AboutScreen.dart';
+import 'package:quiz_test/level_selection/ui/LevelSelectionScreen.dart';
 import 'package:quiz_test/utils/UiUtils.dart';
 
 class MainMenu extends StatelessWidget {
