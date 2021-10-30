@@ -36,4 +36,12 @@ class UiUtils {
       ),
     );
   }
+
+  Flexible generateImage(Image image) {
+    return Flexible(
+      child: FractionallySizedBox(
+        child: image,
+      ),
+    );
+  }
 }

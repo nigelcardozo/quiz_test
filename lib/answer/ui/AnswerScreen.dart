@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quiz_test/constants/dimensions/Dimensions.dart';
 import 'package:quiz_test/utils/UiUtils.dart';
 
 class AnswerScreen extends StatelessWidget {
@@ -12,7 +13,9 @@ class AnswerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // NEED TO INJECT THIS LATER
     UiUtils uiUtils = UiUtils();
+    Dimensions dimensions = Dimensions();
 
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.titleAboutQuiz)),
@@ -21,10 +24,11 @@ class AnswerScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              uiUtils.generateHeightSpacer(0.2),
-              generateImage(Image(image: AssetImage(this.imagePath))),
-              uiUtils.generateHeightSpacer(0.2),
-              generateTextField(0.8, this.answer, context),
+              uiUtils.generateHeightSpacer(dimensions.heightSpace),
+              uiUtils.generateImage(Image(image: AssetImage(this.imagePath))),
+              uiUtils.generateHeightSpacer(dimensions.heightSpace),
+              generateTextField(
+                  dimensions.fractionalWidth, this.answer, context),
             ],
           ),
         ),
@@ -32,17 +36,6 @@ class AnswerScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-// THIS IS THE SAME AS THE ONE IN MAIN MENU
-
-Flexible generateImage(Image image) {
-  return Flexible(
-    child: FractionallySizedBox(
-      // widthFactor: width,
-      child: image,
-    ),
-  );
 }
 
 Flexible generateTextField(double width, String answer, BuildContext context) {

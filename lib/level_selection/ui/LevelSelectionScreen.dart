@@ -1,55 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quiz_test/level/model/LevelViewModel.dart';
+import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
+import 'package:quiz_test/model/Level.dart';
 
 class LevelSelectionScreen extends StatelessWidget {
-  final int minLevelNumber = 1;
-  final int maxLevelNumber = 20;
+  // TODo - change this
+  LevelViewModel levelViewModel = LevelViewModel();
+  List<Level> levelList = [];
 
-  const LevelSelectionScreen({Key? key}) : super(key: key);
+  LevelSelectionScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    List<String> levelList = _generateLevelList(
-        AppLocalizations.of(context)!.menuLevel,
-        minLevelNumber,
-        maxLevelNumber);
+    levelList = LevelRepository().generateLevelList();
 
     return Scaffold(
       appBar:
           AppBar(title: Text(AppLocalizations.of(context)!.titleSelectLevel)),
       backgroundColor: Colors.white,
-      body: SafeArea(child: _generateListView(levelList)),
+      body: SafeArea(child: _generateListView()),
     );
   }
 
-  ListView _generateListView(List<String> entries) {
+  ListView _generateListView() {
     return ListView.builder(
         padding: const EdgeInsets.all(40),
-        itemCount: entries.length,
+        itemCount: levelList.length,
         itemBuilder: (BuildContext context, int index) {
-          return _generateCard(context, entries, index, Colors.lightGreen);
+          return _generateCard(context, index, Colors.lightGreen);
         });
   }
 
-  Card _generateCard(BuildContext context, List<String> entries, int index,
-      MaterialColor requestedColor) {
+  Card _generateCard(
+      BuildContext context, int index, MaterialColor requestedColor) {
     return Card(
-        color: requestedColor,
-        child: _generateListTile(context, entries, index));
+        color: requestedColor, child: _generateListTile(context, index));
   }
 
-  ListTile _generateListTile(
-      BuildContext context, List<String> entries, int index) {
+  ListTile _generateListTile(BuildContext context, int index) {
     return ListTile(
       leading: LayoutBuilder(builder: (context, constraint) {
-        if (_isLevelLocked(index + 1)) {
+        if (levelViewModel.isLevelLocked(index + 1)) {
           return _generateLockedIcon(constraint);
         }
         return _generateUnlockedIcon(constraint);
       }),
       title: Text(
-        entries[index],
+        levelList[index].name,
         style: TextStyle(
           fontSize: 20.0,
           color: Colors.white,
@@ -67,23 +66,6 @@ class LevelSelectionScreen extends StatelessWidget {
         );
       },
     );
-  }
-
-// FOR NOW ALL LEVELS BUT THE FIRST ARE MARKED AS LOCKED
-  List<String> _generateLevelList(
-      String menuTitle, int minLevel, int maxLevel) {
-    List<String> levelList = <String>[];
-
-    for (int i = 1; i < 15; i++) {
-      levelList.add(menuTitle + " " + i.toString());
-    }
-
-    return levelList;
-  }
-
-  bool _isLevelLocked(int levelNumber) {
-    if (levelNumber >= 1 && levelNumber <= 3) return false;
-    return true;
   }
 
   Icon _generateLockedIcon(BoxConstraints constraint) {
