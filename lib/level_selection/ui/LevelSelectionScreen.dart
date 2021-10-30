@@ -16,23 +16,11 @@ class LevelSelectionScreen extends StatelessWidget {
         maxLevelNumber);
 
     return Scaffold(
-      appBar: AppBar(
-          //title: Text('First Route'),
-          title: Text(AppLocalizations.of(context)!.titleSelectLevel)),
+      appBar:
+          AppBar(title: Text(AppLocalizations.of(context)!.titleSelectLevel)),
       backgroundColor: Colors.white,
       body: SafeArea(child: _generateListView(levelList)),
     );
-  }
-
-  List<String> _generateLevelList(
-      String menuTitle, int minLevel, int maxLevel) {
-    List<String> levelList = <String>[];
-
-    for (int i = 1; i < 15; i++) {
-      levelList.add(menuTitle + " " + i.toString());
-    }
-
-    return levelList;
   }
 
   ListView _generateListView(List<String> entries) {
@@ -82,6 +70,17 @@ class LevelSelectionScreen extends StatelessWidget {
   }
 
 // FOR NOW ALL LEVELS BUT THE FIRST ARE MARKED AS LOCKED
+  List<String> _generateLevelList(
+      String menuTitle, int minLevel, int maxLevel) {
+    List<String> levelList = <String>[];
+
+    for (int i = 1; i < 15; i++) {
+      levelList.add(menuTitle + " " + i.toString());
+    }
+
+    return levelList;
+  }
+
   bool _isLevelLocked(int levelNumber) {
     if (levelNumber >= 1 && levelNumber <= 3) return false;
     return true;
