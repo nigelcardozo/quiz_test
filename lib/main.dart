@@ -6,7 +6,7 @@ import 'package:quiz_test/main_menu/ui/MainMenu.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
 import 'package:provider/provider.dart';
 
-import 'level_selection/ui/LevelSelectionScreen.dart';
+import 'level/ui/LevelSelectionScreen.dart';
 
 void main() {
   runApp(MyApp());
