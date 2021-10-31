@@ -12,6 +12,6 @@ class Level {
   //Album({this.userId, this.id, this.name});
   Level({required this.id, required this.name});
 
-  // factory Answer.fromJson(Map<String, dynamic> json) => _$AnswerFromJson(json);
+  // factory Answer.fromJson(Map<String, dynamic> levels) => _$AnswerFromJson(levels);
   // Map<String, dynamic> toJson() => _$AnswerToJson(this);
 }

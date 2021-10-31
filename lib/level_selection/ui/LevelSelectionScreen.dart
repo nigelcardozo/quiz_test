@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quiz_test/level/model/LevelViewModel.dart';
 import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
-import 'package:quiz_test/model/Level.dart';
+import 'package:quiz_test/models/Level.dart';
 
 class LevelSelectionScreen extends StatelessWidget {
   // TODo - change this

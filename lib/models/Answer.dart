@@ -12,6 +12,6 @@ class Answer {
   //Album({this.userId, this.id, this.name});
   Answer({required this.answer, required this.imagePath});
 
-  // factory Answer.fromJson(Map<String, dynamic> json) => _$AnswerFromJson(json);
+  // factory Answer.fromJson(Map<String, dynamic> levels) => _$AnswerFromJson(levels);
   // Map<String, dynamic> toJson() => _$AnswerToJson(this);
 }

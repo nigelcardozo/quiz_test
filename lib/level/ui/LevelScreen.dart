@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quiz_test/answer/ui/AnswerScreen.dart';
 import 'package:quiz_test/answers/repository/AnswersRepository.dart';
-import 'package:quiz_test/model/Answer.dart';
+import 'package:quiz_test/models/Answer.dart';
 
 class LevelScreen extends StatefulWidget {
   final int level;

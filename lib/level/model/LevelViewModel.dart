@@ -1,5 +1,5 @@
 import 'package:quiz_test/level/repository/LevelRepository.dart';
-import 'package:quiz_test/model/Level.dart';
+import 'package:quiz_test/models/Level.dart';
 
 class LevelViewModel {
   List<Level> generateLevels() {
