@@ -3,8 +3,8 @@
 
 //@JsonSerializable(explicitToJson: true)
 class Level {
-  int id;
-  String name;
+  final int id;
+  final String name;
 
   //@JsonKey(name: 'title')
   //String name;
@@ -13,5 +13,7 @@ class Level {
   Level({required this.id, required this.name});
 
   // factory Answer.fromJson(Map<String, dynamic> levels) => _$AnswerFromJson(levels);
-  // Map<String, dynamic> toJson() => _$AnswerToJson(this);
+  factory Level.fromJson(Map<String, dynamic> json) {
+    return Level(id: json["id"], name: json["name"]);
+  }
 }

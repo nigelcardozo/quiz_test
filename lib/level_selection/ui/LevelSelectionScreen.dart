@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/level/model/LevelViewModel.dart';
-import 'package:quiz_test/level/repository/LevelRepository.dart';
+import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
-import 'package:quiz_test/models/Level.dart';
+import 'package:provider/provider.dart';
 
-class LevelSelectionScreen extends StatelessWidget {
-  // TODo - change this
-  LevelViewModel levelViewModel = LevelViewModel();
-  List<Level> levelList = [];
+class LevelSelectionScreen extends StatefulWidget {
+  @override
+  _LevelSelectionScreenState createState() => _LevelSelectionScreenState();
+}
 
-  LevelSelectionScreen({Key? key}) : super(key: key);
+class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Uncomment to get the full list at start up
+    //Provider.of<LevelSelectionViewModel>(context, listen: false).fetchLevels();
+  }
+
+  late LevelSelectionViewModel vm;
 
   @override
   Widget build(BuildContext context) {
-    levelList = LevelRepository().generateLevelList();
+    vm = Provider.of<LevelSelectionViewModel>(context);
+
+    vm.fetchLevels();
 
     return Scaffold(
       appBar:
@@ -27,7 +36,7 @@ class LevelSelectionScreen extends StatelessWidget {
   ListView _generateListView() {
     return ListView.builder(
         padding: const EdgeInsets.all(40),
-        itemCount: levelList.length,
+        itemCount: vm.levels.length,
         itemBuilder: (BuildContext context, int index) {
           return _generateCard(context, index, Colors.lightGreen);
         });
@@ -42,13 +51,13 @@ class LevelSelectionScreen extends StatelessWidget {
   ListTile _generateListTile(BuildContext context, int index) {
     return ListTile(
       leading: LayoutBuilder(builder: (context, constraint) {
-        if (levelViewModel.isLevelLocked(index + 1)) {
+        if (vm.isLevelLocked(index + 1)) {
           return _generateLockedIcon(constraint);
         }
         return _generateUnlockedIcon(constraint);
       }),
       title: Text(
-        levelList[index].name,
+        vm.levels[index].name,
         style: TextStyle(
           fontSize: 20.0,
           color: Colors.white,
