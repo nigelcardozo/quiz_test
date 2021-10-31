@@ -1,17 +1,10 @@
-//import 'package:json_annotation/json_annotation.dart';
-//part 'album.g.dart';
-
-//@JsonSerializable(explicitToJson: true)
 class Answer {
-  String answer;
-  String imagePath;
+  final String solution;
+  final String imagePath;
 
-  //@JsonKey(name: 'title')
-  //String name;
+  Answer({required this.solution, required this.imagePath});
 
-  //Album({this.userId, this.id, this.name});
-  Answer({required this.answer, required this.imagePath});
-
-  // factory Answer.fromJson(Map<String, dynamic> levels) => _$AnswerFromJson(levels);
-  // Map<String, dynamic> toJson() => _$AnswerToJson(this);
+  factory Answer.fromJson(Map<String, dynamic> json) {
+    return Answer(solution: json["solution"], imagePath: json["imagePath"]);
+  }
 }

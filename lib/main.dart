@@ -6,6 +6,8 @@ import 'package:quiz_test/main_menu/ui/MainMenuScreen.dart';
 import 'package:quiz_test/main_menu/view_model/MainMenuViewModel.dart';
 import 'package:provider/provider.dart';
 
+import 'level/view_model/LevelViewModel.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => MainMenuViewModel()),
         ChangeNotifierProvider(create: (context) => LevelSelectionViewModel()),
+        ChangeNotifierProvider(create: (context) => LevelViewModel()),
       ],
       child: MaterialApp(
         onGenerateTitle: (context) {

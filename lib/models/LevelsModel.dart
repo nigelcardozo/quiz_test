@@ -1,9 +1,9 @@
 import 'package:quiz_test/models/Level.dart';
 
-class LevelModel {
+class LevelsModel {
   final Level level;
 
-  LevelModel({required this.level});
+  LevelsModel({required this.level});
 
   int get id {
     return this.level.id;

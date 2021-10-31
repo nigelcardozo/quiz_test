@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_test/level/repository/LevelRepository.dart';
-import 'LevelModel.dart';
+import '../../models/LevelsModel.dart';
 
 class LevelSelectionViewModel extends ChangeNotifier {
-  List<LevelModel> levels = <LevelModel>[];
+  List<LevelsModel> levels = <LevelsModel>[];
 
   Future<void> fetchLevels() async {
     final results = await LevelRepository().fetchLevels();
-    this.levels = results.map((item) => LevelModel(level: item)).toList();
+    this.levels = results.map((item) => LevelsModel(level: item)).toList();
     notifyListeners();
   }
 
