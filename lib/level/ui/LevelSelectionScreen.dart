@@ -13,6 +13,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   @override
   void initState() {
     super.initState();
+
     // Uncomment to get the full list at start up
     //Provider.of<LevelSelectionViewModel>(context, listen: false).fetchLevels();
   }
