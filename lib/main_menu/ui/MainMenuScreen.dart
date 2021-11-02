@@ -19,12 +19,9 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   }
 
   late MainMenuViewModel vm;
-  final Dimensions dimensions = Dimensions();
-
   @override
   Widget build(BuildContext context) {
     vm = Provider.of<MainMenuViewModel>(context);
-    UiUtils uiUtils = UiUtils();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -32,20 +29,20 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           child: Center(
         child: Column(
           children: <Widget>[
-            uiUtils.generateHeightSpacer(dimensions.heightSpace),
-            uiUtils.generateLogo(dimensions.fractionalWidth),
-            uiUtils.generateHeightSpacer(dimensions.fractionalWidth),
-            uiUtils.generateMenuButton(
+            UiUtils().generateHeightSpacer(Dimensions().heightSpace),
+            UiUtils().generateLogo(Dimensions().fractionalWidth),
+            UiUtils().generateHeightSpacer(Dimensions().fractionalWidth),
+            UiUtils().generateMenuButton(
                 context,
-                dimensions.fractionalWidth,
-                dimensions.fractionalHeight,
+                Dimensions().fractionalWidth,
+                Dimensions().fractionalHeight,
                 AppLocalizations.of(context)!.menuPlay,
                 LevelSelectionScreen()),
-            uiUtils.generateHeightSpacer(dimensions.heightSpace),
-            uiUtils.generateMenuButton(
+            UiUtils().generateHeightSpacer(Dimensions().heightSpace),
+            UiUtils().generateMenuButton(
                 context,
-                dimensions.fractionalWidth,
-                dimensions.fractionalHeight,
+                Dimensions().fractionalWidth,
+                Dimensions().fractionalHeight,
                 AppLocalizations.of(context)!.menuAbout,
                 AboutScreen()),
           ],

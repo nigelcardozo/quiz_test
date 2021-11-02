@@ -13,10 +13,6 @@ class AnswerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // NEED TO INJECT THIS LATER
-    UiUtils uiUtils = UiUtils();
-    Dimensions dimensions = Dimensions();
-
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.titleAboutQuiz)),
       backgroundColor: Colors.white,
@@ -24,11 +20,11 @@ class AnswerScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              uiUtils.generateHeightSpacer(dimensions.heightSpace),
-              uiUtils.generateImage(Image(image: AssetImage(this.imagePath))),
-              uiUtils.generateHeightSpacer(dimensions.heightSpace),
+              UiUtils().generateHeightSpacer(Dimensions().heightSpace),
+              UiUtils().generateImage(Image(image: AssetImage(this.imagePath))),
+              UiUtils().generateHeightSpacer(Dimensions().heightSpace),
               generateTextField(
-                  dimensions.fractionalWidth, this.answer, context),
+                  Dimensions().fractionalWidth, this.answer, context),
             ],
           ),
         ),
