@@ -28,7 +28,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
 
     return Scaffold(
       appBar:
-          AppBar(title: Text(AppLocalizations.of(context)!.titleSelectLevel)),
+          AppBar(title: Text(AppLocalizations.of(context).titleSelectLevel)),
       backgroundColor: Colors.white,
       body: SafeArea(child: _generateListView()),
     );

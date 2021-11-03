@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         onGenerateTitle: (context) {
-          return AppLocalizations.of(context)!.appTitle;
+          return AppLocalizations.of(context).appTitle;
         },
         localizationsDelegates: [
           AppLocalizations.delegate,

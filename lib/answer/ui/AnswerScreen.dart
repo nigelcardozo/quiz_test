@@ -14,7 +14,7 @@ class AnswerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.titleAboutQuiz)),
+      appBar: AppBar(title: Text(AppLocalizations.of(context).titleAboutQuiz)),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(

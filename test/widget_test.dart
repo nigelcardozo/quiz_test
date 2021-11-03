@@ -1,15 +1,12 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:mockito/mockito.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_test/about/ui/AboutScreen.dart';
 
 import 'package:quiz_test/main.dart';
+import 'package:quiz_test/main_menu/ui/MainMenuScreen.dart';
+
+class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 void main() {
   testWidgets("Flutter Main Menu Num Widgets", (WidgetTester tester) async {
@@ -43,14 +40,4 @@ void main() {
   //   await tester.pumpWidget(MyApp());
   //   var logo = find.byType(Image).evaluate().single.widget as Image;
   // });
-
-  testWidgets("Flutter Main Menu Test About Button Press",
-      (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
-    var button = find.text("About");
-    expect(button, findsOneWidget);
-    await tester.tap(button);
-    await tester.pump();
-    //expect(find.byType(AboutScreen), findsOneWidget);
-  });
 }

@@ -41,7 +41,7 @@ class _LevelScreenState extends State<LevelScreen> {
   }
 
   String _getTitle(BuildContext context, int level) {
-    return AppLocalizations.of(context)!.titleLevel + " " + level.toString();
+    return AppLocalizations.of(context).titleLevel + " " + level.toString();
   }
 
   GridView _generateGridView(int axisCountSize) {
