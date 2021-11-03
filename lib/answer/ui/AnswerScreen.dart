@@ -20,9 +20,9 @@ class AnswerScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              UiUtils().generateHeightSpacer(Dimensions().heightSpace),
-              UiUtils().generateImage(Image(image: AssetImage(this.imagePath))),
-              UiUtils().generateHeightSpacer(Dimensions().heightSpace),
+              generateHeightSpacer(Dimensions().heightSpace),
+              generateImage(Image(image: AssetImage(this.imagePath))),
+              generateHeightSpacer(Dimensions().heightSpace),
               generateTextField(
                   Dimensions().fractionalWidth, this.answer, context),
             ],

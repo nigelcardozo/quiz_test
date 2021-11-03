@@ -29,17 +29,17 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           child: Center(
         child: Column(
           children: <Widget>[
-            UiUtils().generateHeightSpacer(Dimensions().heightSpace),
-            UiUtils().generateLogo(Dimensions().fractionalWidth),
-            UiUtils().generateHeightSpacer(Dimensions().fractionalWidth),
-            UiUtils().generateMenuButton(
+            generateHeightSpacer(Dimensions().heightSpace),
+            generateLogo(Dimensions().fractionalWidth),
+            generateHeightSpacer(Dimensions().fractionalWidth),
+            generateMenuButton(
                 context,
                 Dimensions().fractionalWidth,
                 Dimensions().fractionalHeight,
                 AppLocalizations.of(context)!.menuPlay,
                 LevelSelectionScreen()),
-            UiUtils().generateHeightSpacer(Dimensions().heightSpace),
-            UiUtils().generateMenuButton(
+            generateHeightSpacer(Dimensions().heightSpace),
+            generateMenuButton(
                 context,
                 Dimensions().fractionalWidth,
                 Dimensions().fractionalHeight,
