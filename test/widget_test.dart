@@ -7,24 +7,50 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:quiz_test/about/ui/AboutScreen.dart';
 
 import 'package:quiz_test/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets("Flutter Main Menu Num Widgets", (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
+    var textField = find.byType(Flexible);
+    expect(textField, findsNWidgets(6));
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  testWidgets("Flutter Main Menu Num Text Buttons",
+      (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+    var textField = find.byType(Text);
+    expect(textField, findsNWidgets(2));
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+  testWidgets("Flutter Main Menu Test Menu Button Play",
+      (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+    var button = find.text("Play");
+    expect(button, findsOneWidget);
+  });
+
+  testWidgets("Flutter Main Menu Test Menu Button About",
+      (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+    var button = find.text("About");
+    expect(button, findsOneWidget);
+  });
+
+  // testWidgets("Flutter Main Menu Test Logo", (WidgetTester tester) async {
+  //   await tester.pumpWidget(MyApp());
+  //   var logo = find.byType(Image).evaluate().single.widget as Image;
+  // });
+
+  testWidgets("Flutter Main Menu Test About Button Press",
+      (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+    var button = find.text("About");
+    expect(button, findsOneWidget);
+    await tester.tap(button);
     await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    //expect(find.byType(AboutScreen), findsOneWidget);
   });
 }
