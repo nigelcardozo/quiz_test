@@ -8,6 +8,13 @@ import 'package:quiz_test/utils/UiUtils.dart';
 import 'package:provider/provider.dart';
 
 class MainMenuScreen extends StatefulWidget {
+  static const mainMenuheightSpacerKey1 = Key('mainMenuHeightSpacerKey1');
+  static const mainMenuheightSpacerKey2 = Key('mainMenuHeightSpacerKey2');
+  static const mainMenuheightSpacerKey3 = Key('mainMenuHeightSpacerKey3');
+  static const mainMenuLogoKey = Key('mainMenuLogoKey');
+  static const mainMenuButtonAboutKey = Key('mainMenuButtonAboutKey');
+  static const mainMenuButtonPlayKey = Key('mainMenuButtonPlayKey');
+
   @override
   _MainMenuScreenState createState() => _MainMenuScreenState();
 }
@@ -29,21 +36,27 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           child: Center(
         child: Column(
           children: <Widget>[
-            generateHeightSpacer(Dimensions().heightSpace),
-            generateLogo(Dimensions().fractionalWidth),
-            generateHeightSpacer(Dimensions().fractionalWidth),
+            generateHeightSpacer(Dimensions().heightSpace,
+                MainMenuScreen.mainMenuheightSpacerKey1),
+            generateLogo(
+                Dimensions().fractionalWidth, MainMenuScreen.mainMenuLogoKey),
+            generateHeightSpacer(Dimensions().fractionalWidth,
+                MainMenuScreen.mainMenuheightSpacerKey2),
             generateMenuButton(
                 context,
                 Dimensions().fractionalWidth,
                 Dimensions().fractionalHeight,
                 AppLocalizations.of(context).menuPlay,
+                MainMenuScreen.mainMenuButtonPlayKey,
                 LevelSelectionScreen()),
-            generateHeightSpacer(Dimensions().heightSpace),
+            generateHeightSpacer(Dimensions().heightSpace,
+                MainMenuScreen.mainMenuheightSpacerKey3),
             generateMenuButton(
                 context,
                 Dimensions().fractionalWidth,
                 Dimensions().fractionalHeight,
                 AppLocalizations.of(context).menuAbout,
+                MainMenuScreen.mainMenuButtonAboutKey,
                 AboutScreen()),
           ],
         ),

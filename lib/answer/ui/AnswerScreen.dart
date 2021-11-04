@@ -5,6 +5,11 @@ import 'package:quiz_test/constants/dimensions/Dimensions.dart';
 import 'package:quiz_test/utils/UiUtils.dart';
 
 class AnswerScreen extends StatelessWidget {
+  static const answerScreenHeightSpacerKey1 =
+      Key('answerScreenHeightSpacerKey1');
+  static const answerScreenHeightSpacerKey2 =
+      Key('answerScreenHeightSpacerKey2');
+
   final String imagePath;
   final String answer;
 
@@ -20,9 +25,11 @@ class AnswerScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              generateHeightSpacer(Dimensions().heightSpace),
+              generateHeightSpacer(
+                  Dimensions().heightSpace, answerScreenHeightSpacerKey1),
               generateImage(Image(image: AssetImage(this.imagePath))),
-              generateHeightSpacer(Dimensions().heightSpace),
+              generateHeightSpacer(
+                  Dimensions().heightSpace, answerScreenHeightSpacerKey2),
               generateTextField(
                   Dimensions().fractionalWidth, this.answer, context),
             ],

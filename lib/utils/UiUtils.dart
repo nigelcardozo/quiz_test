@@ -5,30 +5,32 @@ int addition(int x, int y) {
   return x + y;
 }
 
-Flexible generateHeightSpacer(double height) {
+Flexible generateHeightSpacer(double height, Key key) {
   return Flexible(
     child: FractionallySizedBox(
+      key: key,
       heightFactor: height,
     ),
   );
 }
 
-Flexible generateLogo(double width) {
+Flexible generateLogo(double width, Key key) {
   return Flexible(
     child: FractionallySizedBox(
       widthFactor: width,
-      child: Image(image: AssetImage('assets/images/quizlogo.png')),
+      child: Image(key: key, image: AssetImage('assets/images/quizlogo.png')),
     ),
   );
 }
 
 Flexible generateMenuButton(BuildContext context, double width, double height,
-    String menuText, Widget widget) {
+    String menuText, Key key, Widget widget) {
   return Flexible(
     child: FractionallySizedBox(
       widthFactor: width,
       heightFactor: height,
       child: ElevatedButton(
+        key: key,
         child: Text(menuText),
         onPressed: () {
           Navigator.push(
