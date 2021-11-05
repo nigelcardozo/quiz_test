@@ -10,8 +10,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_test/main.dart';
 import 'package:quiz_test/main_menu/ui/MainMenuScreen.dart';
 
-class MockNavigatorObserver extends Mock implements NavigatorObserver {}
-
 void main() {
   testWidgets("Flutter Main Menu Num Widgets", (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
