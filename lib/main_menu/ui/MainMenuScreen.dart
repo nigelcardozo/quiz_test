@@ -6,6 +6,7 @@ import 'package:quiz_test/level/ui/LevelSelectionScreen.dart';
 import 'package:quiz_test/main_menu/view_model/MainMenuViewModel.dart';
 import 'package:quiz_test/utils/UiUtils.dart';
 import 'package:provider/provider.dart';
+import 'package:quiz_test/utils/dependency_locator.dart';
 
 class MainMenuScreen extends StatefulWidget {
   static const mainMenuheightSpacerKey1 = Key('mainMenuHeightSpacerKey1');
@@ -28,6 +29,8 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   late MainMenuViewModel vm;
   @override
   Widget build(BuildContext context) {
+    UiUtils uiUtils = dependencyLocator<UiUtils>();
+
     vm = Provider.of<MainMenuViewModel>(context);
 
     return Scaffold(
@@ -36,22 +39,22 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           child: Center(
         child: Column(
           children: <Widget>[
-            generateHeightSpacer(Dimensions().heightSpace,
+            uiUtils.generateHeightSpacer(Dimensions().heightSpace,
                 MainMenuScreen.mainMenuheightSpacerKey1),
-            generateLogo(
+            uiUtils.generateLogo(
                 Dimensions().fractionalWidth, MainMenuScreen.mainMenuLogoKey),
-            generateHeightSpacer(Dimensions().fractionalWidth,
+            uiUtils.generateHeightSpacer(Dimensions().fractionalWidth,
                 MainMenuScreen.mainMenuheightSpacerKey2),
-            generateMenuButton(
+            uiUtils.generateMenuButton(
                 context,
                 Dimensions().fractionalWidth,
                 Dimensions().fractionalHeight,
                 AppLocalizations.of(context).menuPlay,
                 MainMenuScreen.mainMenuButtonPlayKey,
                 LevelSelectionScreen()),
-            generateHeightSpacer(Dimensions().heightSpace,
+            uiUtils.generateHeightSpacer(Dimensions().heightSpace,
                 MainMenuScreen.mainMenuheightSpacerKey3),
-            generateMenuButton(
+            uiUtils.generateMenuButton(
                 context,
                 Dimensions().fractionalWidth,
                 Dimensions().fractionalHeight,

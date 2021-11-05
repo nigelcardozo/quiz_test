@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   test('Counter value should be incremented', () {
-    int response = addition(5, 2);
+    int response = UiUtils().addition(5, 2);
 
     expect(response, 7);
   });

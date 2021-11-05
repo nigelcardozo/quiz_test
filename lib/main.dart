@@ -5,10 +5,12 @@ import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/main_menu/ui/MainMenuScreen.dart';
 import 'package:quiz_test/main_menu/view_model/MainMenuViewModel.dart';
 import 'package:provider/provider.dart';
+import 'package:quiz_test/utils/dependency_locator.dart';
 
 import 'level/view_model/LevelViewModel.dart';
 
 void main() {
+  setupDependencyLocator();
   runApp(MyApp());
 }
 

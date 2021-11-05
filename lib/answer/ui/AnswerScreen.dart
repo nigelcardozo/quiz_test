@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quiz_test/constants/dimensions/Dimensions.dart';
 import 'package:quiz_test/utils/UiUtils.dart';
+import 'package:quiz_test/utils/dependency_locator.dart';
 
 class AnswerScreen extends StatelessWidget {
   static const answerScreenHeightSpacerKey1 =
@@ -18,6 +19,8 @@ class AnswerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UiUtils uiUtils = dependencyLocator<UiUtils>();
+
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context).titleAboutQuiz)),
       backgroundColor: Colors.white,
@@ -25,10 +28,10 @@ class AnswerScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              generateHeightSpacer(
+              uiUtils.generateHeightSpacer(
                   Dimensions().heightSpace, answerScreenHeightSpacerKey1),
-              generateImage(Image(image: AssetImage(this.imagePath))),
-              generateHeightSpacer(
+              uiUtils.generateImage(Image(image: AssetImage(this.imagePath))),
+              uiUtils.generateHeightSpacer(
                   Dimensions().heightSpace, answerScreenHeightSpacerKey2),
               generateTextField(
                   Dimensions().fractionalWidth, this.answer, context),
