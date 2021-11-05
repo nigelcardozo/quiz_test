@@ -5,13 +5,12 @@ import 'package:quiz_test/constants/dimensions/Dimensions.dart';
 import 'package:quiz_test/level/ui/LevelSelectionScreen.dart';
 import 'package:quiz_test/main_menu/view_model/MainMenuViewModel.dart';
 import 'package:quiz_test/utils/UiUtils.dart';
-import 'package:provider/provider.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 class MainMenuScreen extends StatefulWidget {
-  static const mainMenuheightSpacerKey1 = Key('mainMenuHeightSpacerKey1');
-  static const mainMenuheightSpacerKey2 = Key('mainMenuHeightSpacerKey2');
-  static const mainMenuheightSpacerKey3 = Key('mainMenuHeightSpacerKey3');
+  static const mainMenuHeightSpacerKey1 = Key('mainMenuHeightSpacerKey1');
+  static const mainMenuHeightSpacerKey2 = Key('mainMenuHeightSpacerKey2');
+  static const mainMenuHeightSpacerKey3 = Key('mainMenuHeightSpacerKey3');
   static const mainMenuLogoKey = Key('mainMenuLogoKey');
   static const mainMenuButtonAboutKey = Key('mainMenuButtonAboutKey');
   static const mainMenuButtonPlayKey = Key('mainMenuButtonPlayKey');
@@ -26,12 +25,11 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
     super.initState();
   }
 
-  late MainMenuViewModel vm;
   @override
   Widget build(BuildContext context) {
-    UiUtils uiUtils = dependencyLocator<UiUtils>();
-
-    vm = Provider.of<MainMenuViewModel>(context);
+    var uiUtils = dependencyLocator<UiUtils>();
+    var dimensions = dependencyLocator<Dimensions>();
+    var mainMenuViewModel = dependencyLocator<MainMenuViewModel>();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -39,25 +37,25 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
           child: Center(
         child: Column(
           children: <Widget>[
-            uiUtils.generateHeightSpacer(Dimensions().heightSpace,
-                MainMenuScreen.mainMenuheightSpacerKey1),
+            uiUtils.generateHeightSpacer(dimensions.heightSpace,
+                MainMenuScreen.mainMenuHeightSpacerKey1),
             uiUtils.generateLogo(
-                Dimensions().fractionalWidth, MainMenuScreen.mainMenuLogoKey),
-            uiUtils.generateHeightSpacer(Dimensions().fractionalWidth,
-                MainMenuScreen.mainMenuheightSpacerKey2),
+                dimensions.fractionalWidth, MainMenuScreen.mainMenuLogoKey),
+            uiUtils.generateHeightSpacer(dimensions.fractionalWidth,
+                MainMenuScreen.mainMenuHeightSpacerKey2),
             uiUtils.generateMenuButton(
                 context,
-                Dimensions().fractionalWidth,
-                Dimensions().fractionalHeight,
+                dimensions.fractionalWidth,
+                dimensions.fractionalHeight,
                 AppLocalizations.of(context).menuPlay,
                 MainMenuScreen.mainMenuButtonPlayKey,
                 LevelSelectionScreen()),
-            uiUtils.generateHeightSpacer(Dimensions().heightSpace,
-                MainMenuScreen.mainMenuheightSpacerKey3),
+            uiUtils.generateHeightSpacer(dimensions.heightSpace,
+                MainMenuScreen.mainMenuHeightSpacerKey3),
             uiUtils.generateMenuButton(
                 context,
-                Dimensions().fractionalWidth,
-                Dimensions().fractionalHeight,
+                dimensions.fractionalWidth,
+                dimensions.fractionalHeight,
                 AppLocalizations.of(context).menuAbout,
                 MainMenuScreen.mainMenuButtonAboutKey,
                 AboutScreen()),
