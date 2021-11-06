@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_test/level/repository/LevelRepository.dart';
-import '../../models/LevelsModel.dart';
+import '../../models/Levels.dart';
 
 class LevelSelectionViewModel extends ChangeNotifier {
   List<LevelsModel> levels = <LevelsModel>[];

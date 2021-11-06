@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_test/level/repository/AnswersRepository.dart';
-import 'package:quiz_test/models/AnswersModel.dart';
+import 'package:quiz_test/models/Answers.dart';
 
 class LevelViewModel extends ChangeNotifier {
   List<AnswersModel> answers = <AnswersModel>[];
