@@ -1,9 +1,9 @@
 import 'package:quiz_test/models/Answer.dart';
 
-class AnswersModel {
+class Answers {
   final Answer answer;
 
-  AnswersModel({required this.answer});
+  Answers({required this.answer});
 
   String get solution {
     return this.answer.solution;
