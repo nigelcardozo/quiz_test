@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutScreen extends StatelessWidget {
   static const aboutAppBarTitleKey = Key('aboutAppBarTitleKey');
-  static const someotherkey = Key('someotherkey');
 
   const AboutScreen({Key? key}) : super(key: key);
 

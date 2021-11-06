@@ -5,6 +5,9 @@ import 'package:quiz_test/level/ui/LevelScreen.dart';
 import 'package:provider/provider.dart';
 
 class LevelSelectionScreen extends StatefulWidget {
+  static const levelSelectionAppBarTitleKey =
+      Key('levelSelectionAppBarTitleKey');
+
   @override
   _LevelSelectionScreenState createState() => _LevelSelectionScreenState();
 }
@@ -27,8 +30,9 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
     vm.fetchLevels();
 
     return Scaffold(
-      appBar:
-          AppBar(title: Text(AppLocalizations.of(context).titleSelectLevel)),
+      appBar: AppBar(
+          key: LevelSelectionScreen.levelSelectionAppBarTitleKey,
+          title: Text(AppLocalizations.of(context).titleSelectLevel)),
       backgroundColor: Colors.white,
       body: SafeArea(child: _generateListView()),
     );
