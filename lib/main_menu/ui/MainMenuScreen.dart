@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quiz_test/about/ui/AboutScreen.dart';
 import 'package:quiz_test/constants/dimensions/Dimensions.dart';
 import 'package:quiz_test/level/ui/LevelSelectionScreen.dart';
-import 'package:quiz_test/main_menu/view_model/MainMenuViewModel.dart';
 import 'package:quiz_test/utils/UiUtils.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
@@ -29,7 +28,6 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   Widget build(BuildContext context) {
     var uiUtils = dependencyLocator<UiUtils>();
     var dimensions = dependencyLocator<Dimensions>();
-    var mainMenuViewModel = dependencyLocator<MainMenuViewModel>();
 
     return Scaffold(
       backgroundColor: Colors.white,
