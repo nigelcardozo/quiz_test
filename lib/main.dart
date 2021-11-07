@@ -7,22 +7,18 @@ import 'package:quiz_test/main_menu/view_model/MainMenuViewModel.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
-import 'level/view_model/LevelViewModel.dart';
-
 void main() {
   setupDependencyLocator();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => MainMenuViewModel()),
         ChangeNotifierProvider(create: (context) => LevelSelectionViewModel()),
-        ChangeNotifierProvider(create: (context) => LevelViewModel()),
       ],
       child: MaterialApp(
         onGenerateTitle: (context) {

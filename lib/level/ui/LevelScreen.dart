@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 import 'package:quiz_test/answer/ui/AnswerScreen.dart';
-import 'package:quiz_test/level/view_model/LevelViewModel.dart';
+import 'package:quiz_test/level/view_model/LevelHelper.dart';
+import 'package:quiz_test/models/Answers.dart';
+import 'package:quiz_test/utils/dependency_locator.dart';
 
 class LevelScreen extends StatefulWidget {
   final int level;
@@ -15,40 +16,47 @@ class LevelScreen extends StatefulWidget {
 
 class _LevelScreenState extends State<LevelScreen> {
   final int axisCountSize = 3;
-  late LevelViewModel vm;
+  List<Answers>? answers;
+  LevelHelper levelHelper = dependencyLocator<LevelHelper>();
 
   @override
   void initState() {
     super.initState();
-
-    // Uncomment to get the full list at start up
-    //Provider.of<LevelSelectionViewModel>(context, listen: false).fetchLevels();
   }
 
   @override
-  Widget build(BuildContext context) {
-    vm = Provider.of<LevelViewModel>(context);
+  Widget build(BuildContext context) => FutureBuilder(
+        future: _getAnswers(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Scaffold(
+              appBar: AppBar(title: Text(_getTitle(context, widget.level))),
+              backgroundColor: Colors.white,
+              body: SafeArea(
+                child: _generateGridView(axisCountSize),
+              ),
+            );
+          } else {
+            // Temporary - Improve this
+            return CircularProgressIndicator();
+          }
+        },
+      );
 
-    vm.fetchAnswers(widget.level);
-
-    return Scaffold(
-      appBar: AppBar(title: Text(_getTitle(context, widget.level))),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: _generateGridView(axisCountSize),
-      ),
-    );
-  }
+  Future<bool> _getAnswers() => Future(() async {
+        print("_getAnswers $widget.level");
+        levelHelper.level = widget.level;
+        answers = await dependencyLocator.getAsync<List<Answers>>();
+        return true;
+      });
 
   String _getTitle(BuildContext context, int level) {
     return AppLocalizations.of(context).titleLevel + " " + level.toString();
   }
 
   GridView _generateGridView(int axisCountSize) {
-    print(vm.answers.length);
-
     return GridView.builder(
-        itemCount: vm.answers.length,
+        itemCount: answers?.length,
         gridDelegate: _generateSliverGrid(axisCountSize),
         itemBuilder: (BuildContext context, int index) {
           return _generateImageCard(context, index);
@@ -62,7 +70,7 @@ class _LevelScreenState extends State<LevelScreen> {
   Card _generateImageCard(BuildContext context, int index) {
     return Card(
       child: new InkResponse(
-        child: Image(image: AssetImage(vm.answers[index].imagePath)),
+        child: Image(image: AssetImage(answers![index].imagePath)),
         onTap: () {
           _launchAnswerScreen(context, index);
         },
@@ -75,8 +83,8 @@ class _LevelScreenState extends State<LevelScreen> {
       context,
       MaterialPageRoute(
           builder: (context) => AnswerScreen(
-              imagePath: vm.answers[index].imagePath,
-              answer: vm.answers[index].solution)),
+              imagePath: answers![index].imagePath,
+              answer: answers![index].solution)),
     );
   }
 }
