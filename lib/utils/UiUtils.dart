@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
 class UiUtils {
-  // TEMPORARY FOR UNIT TEST PURPOSES ONLY
-  int addition(int x, int y) {
-    return x + y;
-  }
-
   Flexible generateHeightSpacer(double height, Key key) {
     return Flexible(
       child: FractionallySizedBox(
