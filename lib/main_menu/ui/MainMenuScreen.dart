@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quiz_test/about/ui/AboutScreen.dart';
 import 'package:quiz_test/constants/dimensions/Dimensions.dart';
 import 'package:quiz_test/level/ui/LevelSelectionScreen.dart';
+import 'package:quiz_test/main_menu/repository/main_menu_resource_provider.dart';
 import 'package:quiz_test/utils/UiUtils.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
@@ -28,6 +29,8 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   Widget build(BuildContext context) {
     var uiUtils = dependencyLocator<UiUtils>();
     var dimensions = dependencyLocator<Dimensions>();
+    var mainMenuResourceProvider =
+        dependencyLocator<MainMenuResourceProvider>();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -45,7 +48,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 context,
                 dimensions.fractionalWidth,
                 dimensions.fractionalHeight,
-                AppLocalizations.of(context).menuPlay,
+                mainMenuResourceProvider.getMenuPlayTitle(context),
                 MainMenuScreen.mainMenuButtonPlayKey,
                 LevelSelectionScreen()),
             uiUtils.generateHeightSpacer(dimensions.heightSpace,
@@ -54,7 +57,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                 context,
                 dimensions.fractionalWidth,
                 dimensions.fractionalHeight,
-                AppLocalizations.of(context).menuAbout,
+                mainMenuResourceProvider.getMenuAboutTitle(context),
                 MainMenuScreen.mainMenuButtonAboutKey,
                 AboutScreen()),
           ],

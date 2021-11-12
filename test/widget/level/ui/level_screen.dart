@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_test/about/ui/AboutScreen.dart';
+import 'package:quiz_test/level/ui/LevelScreen.dart';
 import 'package:quiz_test/level/ui/LevelSelectionScreen.dart';
 import 'package:quiz_test/main.dart';
 import 'package:quiz_test/main_menu/ui/MainMenuScreen.dart';
@@ -10,10 +11,9 @@ void main() {
   setup();
 
   testWidgets("MainMenu Validate 6 Widgets", (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
-    var textField = find.byType(Flexible);
-    expect(textField, findsNWidgets(6));
+    await tester.pumpWidget(LevelScreen(level: 1));
   });
+
   //
   // testWidgets("MainMenu Validate Two Text Menu Buttons",
   //     (WidgetTester tester) async {
