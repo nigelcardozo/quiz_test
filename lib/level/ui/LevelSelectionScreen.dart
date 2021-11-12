@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quiz_test/level/view_model/LevelHelper.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:quiz_test/utils/dependency_locator.dart';
+
+LevelHelper levelHelper = dependencyLocator<LevelHelper>();
 
 class LevelSelectionScreen extends StatefulWidget {
   static const levelSelectionAppBarTitleKey =
@@ -71,12 +75,12 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
       ),
       subtitle: Text('0 / 15', style: TextStyle(color: Colors.white70)),
       onTap: () {
+        levelHelper.level = index + 1;
         print('Pressed $index');
 
         Navigator.push(
           context,
-          MaterialPageRoute(
-              builder: (context) => LevelScreen(level: (index + 1))),
+          MaterialPageRoute(builder: (context) => LevelScreen()),
         );
       },
     );

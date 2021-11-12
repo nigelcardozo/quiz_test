@@ -6,9 +6,9 @@ import 'package:quiz_test/models/Answers.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 class LevelScreen extends StatefulWidget {
-  final int level;
+  static const levelScreenAppBarTitleKey = Key('levelScreenAppBarTitleKey');
 
-  LevelScreen({Key? key, required this.level}) : super(key: key);
+  LevelScreen({Key? key}) : super(key: key);
 
   @override
   _LevelScreenState createState() => _LevelScreenState();
@@ -30,7 +30,12 @@ class _LevelScreenState extends State<LevelScreen> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Scaffold(
-              appBar: AppBar(title: Text(_getTitle(context, widget.level))),
+              appBar: AppBar(
+                key: LevelScreen.levelScreenAppBarTitleKey,
+                title: Text(
+                  _getTitle(context, levelHelper.level),
+                ),
+              ),
               backgroundColor: Colors.white,
               body: SafeArea(
                 child: _generateGridView(axisCountSize),
@@ -38,14 +43,14 @@ class _LevelScreenState extends State<LevelScreen> {
             );
           } else {
             // Temporary - Improve this
-            return CircularProgressIndicator();
+            return new Center(
+              child: CircularProgressIndicator(),
+            );
           }
         },
       );
 
   Future<bool> _getAnswers() => Future(() async {
-        print("_getAnswers $widget.level");
-        levelHelper.level = widget.level;
         answers = await dependencyLocator.getAsync<List<Answers>>();
         return true;
       });
