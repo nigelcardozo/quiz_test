@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:quiz_test/constants/dimensions/Dimensions.dart';
+import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelHelper.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/level/view_model/LevelViewModel.dart';
@@ -16,6 +17,7 @@ void setupDependencyLocator() {
       .registerSingleton<MainMenuResourceProvider>(MainMenuResourceProvider());
   dependencyLocator.registerFactory(() => Dimensions());
   dependencyLocator.registerFactory(() => MainMenuViewModel());
+  dependencyLocator.registerSingleton<LevelRepository>(LevelRepository());
   //dependencyLocator.registerFactory(() => LevelSelectionViewModel());
   dependencyLocator
       .registerSingleton<LevelSelectionViewModel>(LevelSelectionViewModel());

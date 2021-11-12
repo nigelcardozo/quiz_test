@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
+import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelHelper.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
@@ -10,6 +11,7 @@ import 'package:quiz_test/utils/dependency_locator.dart';
 LevelSelectionViewModel levelSelectionViewModel =
     dependencyLocator<LevelSelectionViewModel>();
 LevelHelper levelHelper = dependencyLocator<LevelHelper>();
+LevelRepository levelRepository = dependencyLocator<LevelRepository>();
 
 class LevelSelectionScreen extends StatefulWidget
     with GetItStatefulWidgetMixin {
@@ -27,6 +29,10 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
     super.initState();
   }
 
+  void _setLevelSelectionViewModelRepository() {
+    levelSelectionViewModel.setRepository(levelRepository);
+  }
+
   Future<void> _fetchLevels() async {
     await levelSelectionViewModel.fetchLevels();
   }
@@ -34,6 +40,8 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
   @override
   Widget build(BuildContext context) {
     final levelChanged = watchOnly((LevelSelectionViewModel x) => x.changed);
+
+    _setLevelSelectionViewModelRepository();
     _fetchLevels();
 
     return Scaffold(
