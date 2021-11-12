@@ -3,11 +3,13 @@ import 'package:quiz_test/level/repository/LevelRepository.dart';
 import '../../models/Levels.dart';
 
 class LevelSelectionViewModel extends ChangeNotifier {
+  bool changed = false;
   List<Levels> levels = <Levels>[];
 
   Future<void> fetchLevels() async {
     final results = await LevelRepository().fetchLevels();
     this.levels = results.map((item) => Levels(level: item)).toList();
+    changed = true;
     notifyListeners();
   }
 

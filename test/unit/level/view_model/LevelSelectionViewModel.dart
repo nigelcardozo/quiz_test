@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mockito/mockito.dart';
 import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
+import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/level/view_model/LevelViewModel.dart';
 import 'package:quiz_test/models/Level.dart';
 import 'package:quiz_test/models/Levels.dart';
@@ -45,11 +46,9 @@ void main() {
     when(mockLevelRepository.fetchLevels())
         .thenAnswer((_) async => Future.value(levelsList));
 
-    LevelSelectionViewModel levelSelectionViewModel = new LevelSelectionViewModel
-        .
-        //Example example = new Example.withMocks(postHelper: mockedPostHelper);
-
-        levelSelectionViewModel.fetchLevels();
+    LevelSelectionViewModel levelSelectionViewModel = new LevelSelectionViewModel;
+    //Example example = new Example.withMocks(postHelper: mockedPostHelper);
+    levelSelectionViewModel.fetchLevels();
   });
 //     when(cat.eatFood(any)).thenReturn(true);
 //

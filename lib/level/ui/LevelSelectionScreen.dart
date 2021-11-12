@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:quiz_test/level/view_model/LevelHelper.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
+LevelSelectionViewModel levelSelectionViewModel =
+    dependencyLocator<LevelSelectionViewModel>();
 LevelHelper levelHelper = dependencyLocator<LevelHelper>();
 
-class LevelSelectionScreen extends StatefulWidget {
+class LevelSelectionScreen extends StatefulWidget
+    with GetItStatefulWidgetMixin {
   static const levelSelectionAppBarTitleKey =
       Key('levelSelectionAppBarTitleKey');
 
@@ -16,22 +20,21 @@ class LevelSelectionScreen extends StatefulWidget {
   _LevelSelectionScreenState createState() => _LevelSelectionScreenState();
 }
 
-class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
+class _LevelSelectionScreenState extends State<LevelSelectionScreen>
+    with GetItStateMixin {
   @override
   void initState() {
     super.initState();
-
-    // Uncomment to get the full list at start up
-    //Provider.of<LevelSelectionViewModel>(context, listen: false).fetchLevels();
   }
 
-  late LevelSelectionViewModel vm;
+  Future<void> _fetchLevels() async {
+    await levelSelectionViewModel.fetchLevels();
+  }
 
   @override
   Widget build(BuildContext context) {
-    vm = Provider.of<LevelSelectionViewModel>(context);
-
-    vm.fetchLevels();
+    final levelChanged = watchOnly((LevelSelectionViewModel x) => x.changed);
+    _fetchLevels();
 
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +48,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   ListView _generateListView() {
     return ListView.builder(
         padding: const EdgeInsets.all(40),
-        itemCount: vm.levels.length,
+        itemCount: levelSelectionViewModel.levels.length,
         itemBuilder: (BuildContext context, int index) {
           return _generateCard(context, index, Colors.lightGreen);
         });
@@ -60,13 +63,13 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   ListTile _generateListTile(BuildContext context, int index) {
     return ListTile(
       leading: LayoutBuilder(builder: (context, constraint) {
-        if (vm.isLevelLocked(index + 1)) {
+        if (levelSelectionViewModel.isLevelLocked(index + 1)) {
           return _generateLockedIcon(constraint);
         }
         return _generateUnlockedIcon(constraint);
       }),
       title: Text(
-        vm.levels[index].name,
+        levelSelectionViewModel.levels[index].name,
         style: TextStyle(
           fontSize: 20.0,
           color: Colors.white,
