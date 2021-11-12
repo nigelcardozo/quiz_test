@@ -12,22 +12,22 @@ import 'package:test/test.dart';
 class MockLevelRepository extends Mock implements LevelRepository {}
 
 void main() {
-  // test('Test isLevelLocked returns correct response', () {
-  //   bool response = LevelSelectionViewModel().isLevelLocked(1);
-  //   expect(response, false);
-  //
-  //   response = LevelSelectionViewModel().isLevelLocked(2);
-  //   expect(response, false);
-  //
-  //   response = LevelSelectionViewModel().isLevelLocked(3);
-  //   expect(response, false);
-  //
-  //   response = LevelSelectionViewModel().isLevelLocked(0);
-  //   expect(response, true);
-  //
-  //   response = LevelSelectionViewModel().isLevelLocked(4);
-  //   expect(response, true);
-  // });
+  test('Test isLevelLocked returns correct response', () {
+    bool response = LevelSelectionViewModel().isLevelLocked(1);
+    expect(response, false);
+
+    response = LevelSelectionViewModel().isLevelLocked(2);
+    expect(response, false);
+
+    response = LevelSelectionViewModel().isLevelLocked(3);
+    expect(response, false);
+
+    response = LevelSelectionViewModel().isLevelLocked(0);
+    expect(response, true);
+
+    response = LevelSelectionViewModel().isLevelLocked(4);
+    expect(response, true);
+  });
 
   test('Waiting for an interaction', () async {
     final mockLevelRepository = MockLevelRepository();
@@ -46,7 +46,9 @@ void main() {
     when(mockLevelRepository.fetchLevels())
         .thenAnswer((_) async => Future.value(levelsList));
 
-    LevelSelectionViewModel levelSelectionViewModel = new LevelSelectionViewModel;
+    LevelSelectionViewModel levelSelectionViewModel =
+        new LevelSelectionViewModel();
+    levelSelectionViewModel.setRepository(mockLevelRepository);
     //Example example = new Example.withMocks(postHelper: mockedPostHelper);
     levelSelectionViewModel.fetchLevels();
   });
