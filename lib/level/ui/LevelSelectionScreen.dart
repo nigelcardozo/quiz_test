@@ -5,7 +5,6 @@ import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelHelper.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
-import 'package:provider/provider.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 LevelSelectionViewModel levelSelectionViewModel =
