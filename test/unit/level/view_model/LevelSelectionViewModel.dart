@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -27,7 +28,7 @@ void main() {
     expect(response, true);
   });
 
-  test('Waiting for an interaction', () async {
+  test('Test that LevelSelectionViewModel level is correctly set', () async {
     var mockLevelRepository = MockLevelRepository();
 
     List<Level> levelsList = <Level>[];
@@ -42,14 +43,14 @@ void main() {
     levelsList.add(level);
 
     when(mockLevelRepository.fetchLevels())
-        .thenAnswer((_) async => Future.value(levelsList));
+        .thenAnswer((_) async => SynchronousFuture((levelsList)));
 
     LevelSelectionViewModel levelSelectionViewModel =
         new LevelSelectionViewModel();
     levelSelectionViewModel.setRepository(mockLevelRepository);
 
-    var x = levelSelectionViewModel.fetchLevels();
+    await levelSelectionViewModel.fetchLevels();
 
-    var y = 5;
+    expect(levelSelectionViewModel.levels.length, 3);
   });
 }
