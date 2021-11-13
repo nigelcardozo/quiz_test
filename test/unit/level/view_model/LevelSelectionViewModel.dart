@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
-import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
-import 'package:quiz_test/level/view_model/LevelViewModel.dart';
 import 'package:quiz_test/models/Level.dart';
-import 'package:quiz_test/models/Levels.dart';
-import 'package:quiz_test/utils/UiUtils.dart';
 import 'package:test/test.dart';
 
-class MockLevelRepository extends Mock implements LevelRepository {}
+import 'LevelSelectionViewModel.mocks.dart';
 
+@GenerateMocks([LevelRepository])
 void main() {
   test('Test isLevelLocked returns correct response', () {
     bool response = LevelSelectionViewModel().isLevelLocked(1);
@@ -30,7 +28,7 @@ void main() {
   });
 
   test('Waiting for an interaction', () async {
-    final mockLevelRepository = MockLevelRepository();
+    var mockLevelRepository = MockLevelRepository();
 
     List<Level> levelsList = <Level>[];
 
@@ -50,27 +48,8 @@ void main() {
         new LevelSelectionViewModel();
     levelSelectionViewModel.setRepository(mockLevelRepository);
 
-    levelSelectionViewModel.fetchLevels();
-  });
-//     when(cat.eatFood(any)).thenReturn(true);
-//
-//     Future<void> fetchLevels(Cat cat) {
-//       return cat.chew();
-//     }
-//
-//     // Waiting for a call.
-//     chewHelper(cat);
-//     await untilCalled(cat.chew()); // This completes when cat.chew() is called.
-//
-//     // Waiting for a call that has already happened.
-//     cat.eatFood('Fish');
-//     await untilCalled(cat.eatFood(any)); // This completes immediately.
+    var x = levelSelectionViewModel.fetchLevels();
 
-//   // class FakeCat extends Fake implements Cat {
-//   // @override
-//   // bool? eatFood(String? food, {bool? hungry}) {
-//   // print('Fake eat $food');
-//   // return true;
-//   // }
-//   // }
+    var y = 5;
+  });
 }
