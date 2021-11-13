@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelHelper.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/level/ui/LevelScreen.dart';
+import 'package:quiz_test/models/Levels.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 LevelSelectionViewModel levelSelectionViewModel =
@@ -12,8 +12,7 @@ LevelSelectionViewModel levelSelectionViewModel =
 LevelHelper levelHelper = dependencyLocator<LevelHelper>();
 LevelRepository levelRepository = dependencyLocator<LevelRepository>();
 
-class LevelSelectionScreen extends StatefulWidget
-    with GetItStatefulWidgetMixin {
+class LevelSelectionScreen extends StatefulWidget {
   static const levelSelectionAppBarTitleKey =
       Key('levelSelectionAppBarTitleKey');
 
@@ -21,41 +20,50 @@ class LevelSelectionScreen extends StatefulWidget
   _LevelSelectionScreenState createState() => _LevelSelectionScreenState();
 }
 
-class _LevelSelectionScreenState extends State<LevelSelectionScreen>
-    with GetItStateMixin {
+class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
+  List<Levels>? levels;
+
   @override
   void initState() {
     super.initState();
+    _setLevelSelectionViewModelRepository();
+    _fetchLevels();
   }
 
   void _setLevelSelectionViewModelRepository() {
     levelSelectionViewModel.setRepository(levelRepository);
   }
 
-  Future<void> _fetchLevels() async {
-    await levelSelectionViewModel.fetchLevels();
-  }
+  Future<bool> _fetchLevels() => Future(() async {
+        levels = await levelSelectionViewModel.fetchLevels();
+        return true;
+      });
 
   @override
-  Widget build(BuildContext context) {
-    final levelsUpdated = watchOnly((LevelSelectionViewModel x) => x.levels);
-
-    _setLevelSelectionViewModelRepository();
-    _fetchLevels();
-
-    return Scaffold(
-      appBar: AppBar(
-          key: LevelSelectionScreen.levelSelectionAppBarTitleKey,
-          title: Text(AppLocalizations.of(context).titleSelectLevel)),
-      backgroundColor: Colors.white,
-      body: SafeArea(child: _generateListView()),
-    );
-  }
+  Widget build(BuildContext context) => FutureBuilder(
+        future: _fetchLevels(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Scaffold(
+              appBar: AppBar(
+                  key: LevelSelectionScreen.levelSelectionAppBarTitleKey,
+                  title: Text(AppLocalizations.of(context).titleSelectLevel)),
+              backgroundColor: Colors.white,
+              body: SafeArea(child: _generateListView()),
+            );
+          } else {
+            // Temporary - Improve this
+            return new Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      );
 
   ListView _generateListView() {
     return ListView.builder(
         padding: const EdgeInsets.all(40),
-        itemCount: levelSelectionViewModel.levels.length,
+        itemCount: levels!.length,
         itemBuilder: (BuildContext context, int index) {
           return _generateCard(context, index, Colors.lightGreen);
         });
@@ -76,7 +84,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
         return _generateUnlockedIcon(constraint);
       }),
       title: Text(
-        levelSelectionViewModel.levels[index].name,
+        levels![index].name,
         style: TextStyle(
           fontSize: 20.0,
           color: Colors.white,

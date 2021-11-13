@@ -10,10 +10,9 @@ class LevelSelectionViewModel extends ChangeNotifier {
     this.levelRepository = levelRepository;
   }
 
-  Future<void> fetchLevels() async {
+  Future<List<Levels>> fetchLevels() async {
     final results = await levelRepository.fetchLevels();
-    this.levels = results.map((item) => Levels(level: item)).toList();
-    notifyListeners();
+    return results.map((item) => Levels(level: item)).toList();
   }
 
   // ToDo - These are hard coded for now... should be dynamic when required.

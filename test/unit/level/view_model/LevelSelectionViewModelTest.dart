@@ -56,9 +56,7 @@ void main() {
 
     levelSelectionViewModel.setRepository(mockLevelRepository);
 
-    await levelSelectionViewModel.fetchLevels();
-
-    var result = levelSelectionViewModel.levels;
+    var result = await levelSelectionViewModel.fetchLevels();
 
     expect(result.length, 3);
 
