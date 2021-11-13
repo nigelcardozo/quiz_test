@@ -39,7 +39,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen>
 
   @override
   Widget build(BuildContext context) {
-    final levelChanged = watchOnly((LevelSelectionViewModel x) => x.changed);
+    final levelsUpdated = watchOnly((LevelSelectionViewModel x) => x.levels);
 
     _setLevelSelectionViewModelRepository();
     _fetchLevels();

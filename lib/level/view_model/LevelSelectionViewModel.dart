@@ -4,9 +4,6 @@ import '../../models/Levels.dart';
 
 class LevelSelectionViewModel extends ChangeNotifier {
   late LevelRepository levelRepository;
-
-  // ToDo - Need to identify how to watch 'levels' instead.
-  bool changed = false;
   List<Levels> levels = <Levels>[];
 
   void setRepository(LevelRepository levelRepository) {
@@ -16,7 +13,6 @@ class LevelSelectionViewModel extends ChangeNotifier {
   Future<void> fetchLevels() async {
     final results = await levelRepository.fetchLevels();
     this.levels = results.map((item) => Levels(level: item)).toList();
-    changed = true;
     notifyListeners();
   }
 
