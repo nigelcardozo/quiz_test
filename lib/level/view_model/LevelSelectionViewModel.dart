@@ -16,7 +16,7 @@ class LevelSelectionViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // ToDo - These are hard coded for now... will change later.
+  // ToDo - These are hard coded for now... should be dynamic when required.
   bool isLevelLocked(int levelNumber) {
     if (levelNumber >= 1 && levelNumber <= 3) return false;
     return true;

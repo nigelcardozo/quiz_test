@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quiz_test/answer/ui/AnswerScreen.dart';
+import 'package:quiz_test/level/repository/AnswersRepository.dart';
 import 'package:quiz_test/level/view_model/LevelHelper.dart';
+import 'package:quiz_test/level/view_model/LevelViewModel.dart';
 import 'package:quiz_test/models/Answers.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
+
+LevelViewModel levelViewModel = dependencyLocator<LevelViewModel>();
+AnswerRepository answerRepository = dependencyLocator<AnswerRepository>();
 
 class LevelScreen extends StatefulWidget {
   static const levelScreenAppBarTitleKey = Key('levelScreenAppBarTitleKey');
@@ -22,6 +27,16 @@ class _LevelScreenState extends State<LevelScreen> {
   @override
   void initState() {
     super.initState();
+    _setLevelViewModelAnswerRepository();
+    _setLevel();
+  }
+
+  void _setLevelViewModelAnswerRepository() {
+    levelViewModel.setRepository(answerRepository);
+  }
+
+  void _setLevel() {
+    levelViewModel.setLevel(levelHelper.level);
   }
 
   @override
@@ -51,7 +66,7 @@ class _LevelScreenState extends State<LevelScreen> {
       );
 
   Future<bool> _getAnswers() => Future(() async {
-        answers = await dependencyLocator.getAsync<List<Answers>>();
+        answers = await levelViewModel.fetchAnswers();
         return true;
       });
 

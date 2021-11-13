@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:quiz_test/constants/dimensions/Dimensions.dart';
+import 'package:quiz_test/level/repository/AnswersRepository.dart';
 import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelHelper.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
@@ -17,11 +18,13 @@ void setupDependencyLocator() {
       .registerSingleton<MainMenuResourceProvider>(MainMenuResourceProvider());
   dependencyLocator.registerFactory(() => Dimensions());
   dependencyLocator.registerFactory(() => MainMenuViewModel());
+  dependencyLocator.registerSingleton<AnswerRepository>(AnswerRepository());
   dependencyLocator.registerSingleton<LevelRepository>(LevelRepository());
   //dependencyLocator.registerFactory(() => LevelSelectionViewModel());
+  dependencyLocator.registerSingleton<LevelViewModel>(LevelViewModel());
   dependencyLocator
       .registerSingleton<LevelSelectionViewModel>(LevelSelectionViewModel());
   dependencyLocator.registerSingleton<LevelHelper>(LevelHelper());
   dependencyLocator.registerFactoryAsync<List<Answers>>(
-      () async => LevelViewModel().tempFetchAnswers());
+      () async => LevelViewModel().fetchAnswers());
 }

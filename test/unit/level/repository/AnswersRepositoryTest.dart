@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:quiz_test/level/repository/AnswersRepository.dart';
 import 'package:test/test.dart';
 
 void main() {
   test('Test getLevelPath returns correct paths', () {
-    const mainMenuHeightSpacerKey1 = Key('mainMenuHeightSpacerKey1');
-
     String response = AnswerRepository().getLevelPath(1);
     expect(response, 'assets/data/levels/Level1.json');
 

@@ -5,7 +5,7 @@ import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/models/Level.dart';
 import 'package:test/test.dart';
-import 'LevelSelectionViewModel.mocks.dart';
+import 'LevelSelectionViewModelTest.mocks.dart';
 
 late LevelSelectionViewModel levelSelectionViewModel;
 
@@ -63,11 +63,12 @@ void main() {
     expect(result.length, 3);
 
     expect(result[0].id, 1);
-    expect(result[1].id, 2);
-    expect(result[2].id, 3);
-
     expect(result[0].name, "Level 1");
+
+    expect(result[1].id, 2);
     expect(result[1].name, "Level 2");
+
+    expect(result[2].id, 3);
     expect(result[2].name, "Level 3");
   });
 }
