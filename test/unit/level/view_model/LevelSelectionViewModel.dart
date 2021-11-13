@@ -1,36 +1,21 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:quiz_test/level/repository/LevelRepository.dart';
 import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
 import 'package:quiz_test/models/Level.dart';
 import 'package:test/test.dart';
-
 import 'LevelSelectionViewModel.mocks.dart';
+
+late LevelSelectionViewModel levelSelectionViewModel;
 
 @GenerateMocks([LevelRepository])
 void main() {
-  test('Test isLevelLocked returns correct response', () {
-    bool response = LevelSelectionViewModel().isLevelLocked(1);
-    expect(response, false);
-
-    response = LevelSelectionViewModel().isLevelLocked(2);
-    expect(response, false);
-
-    response = LevelSelectionViewModel().isLevelLocked(3);
-    expect(response, false);
-
-    response = LevelSelectionViewModel().isLevelLocked(0);
-    expect(response, true);
-
-    response = LevelSelectionViewModel().isLevelLocked(4);
-    expect(response, true);
+  setUp(() {
+    levelSelectionViewModel = new LevelSelectionViewModel();
   });
 
-  test('Test that LevelSelectionViewModel level is correctly set', () async {
-    var mockLevelRepository = MockLevelRepository();
-
+  List<Level> _getLevelTestData() {
     List<Level> levelsList = <Level>[];
 
     Level level = Level(id: 1, name: "Level 1");
@@ -42,15 +27,47 @@ void main() {
     level = Level(id: 3, name: "Level 3");
     levelsList.add(level);
 
+    return levelsList;
+  }
+
+  test('Test isLevelLocked returns correct responses', () {
+    bool response = levelSelectionViewModel.isLevelLocked(1);
+    expect(response, false);
+
+    response = levelSelectionViewModel.isLevelLocked(2);
+    expect(response, false);
+
+    response = levelSelectionViewModel.isLevelLocked(3);
+    expect(response, false);
+
+    response = levelSelectionViewModel.isLevelLocked(0);
+    expect(response, true);
+
+    response = levelSelectionViewModel.isLevelLocked(4);
+    expect(response, true);
+  });
+
+  test('Test that LevelSelectionViewModel level is correctly set', () async {
+    var mockLevelRepository = MockLevelRepository();
+    List<Level> levelsList = _getLevelTestData();
+
     when(mockLevelRepository.fetchLevels())
         .thenAnswer((_) async => SynchronousFuture((levelsList)));
 
-    LevelSelectionViewModel levelSelectionViewModel =
-        new LevelSelectionViewModel();
     levelSelectionViewModel.setRepository(mockLevelRepository);
 
     await levelSelectionViewModel.fetchLevels();
 
-    expect(levelSelectionViewModel.levels.length, 3);
+    var result = levelSelectionViewModel.levels;
+
+    expect(result.length, 3);
+
+    expect(result[0].id, 1);
+    expect(result[1].id, 2);
+    expect(result[2].id, 3);
+
+    expect(result[0].name, "Level 1");
+    expect(result[1].name, "Level 2");
+    expect(result[2].name, "Level 3");
   });
 }
