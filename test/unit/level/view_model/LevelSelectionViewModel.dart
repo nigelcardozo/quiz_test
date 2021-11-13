@@ -49,7 +49,7 @@ void main() {
     LevelSelectionViewModel levelSelectionViewModel =
         new LevelSelectionViewModel();
     levelSelectionViewModel.setRepository(mockLevelRepository);
-    //Example example = new Example.withMocks(postHelper: mockedPostHelper);
+
     levelSelectionViewModel.fetchLevels();
   });
 //     when(cat.eatFood(any)).thenReturn(true);
