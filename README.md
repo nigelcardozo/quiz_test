@@ -1,6 +1,4 @@
-# quiz_test
-
-Quiz Test Project
+# quiz_test - A Quiz Test Sample Application
 
 ## Why
 
