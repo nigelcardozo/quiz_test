@@ -2,7 +2,7 @@
 
 Quiz Test Project
 
-## Getting Started
+## Why
 
 QUIZ_TEST was a learning project for me. I come from an Android background and have a strong
 knowledge of Kotlin and Java. I had already completed a Udemy Flutter course which gave me a good
@@ -14,6 +14,8 @@ seemed to be little consideration for code reuse and/or splitting up the UI in a
 
 In addition testing was not considered and thus neither was dependency injection. My intent for this
 project was to apply my knowledge from my Android work to my learning of Flutter.
+
+## What I learnt
 
 I can't say that this is perfect and along the way I found the need to rearchitect my code several
 times. For instance I found quite early that unlike Android there seemed to be no consideration
@@ -29,6 +31,8 @@ future I'd like to switch to RiverPod as I believe this is meant to be much bett
 
 Finally although it's different to the Android version I used Mockito to help with my testing.
 
+## Still to do
+
 This project is provided as/is and is all my own work. It is not perfect and at the time of writing
 I know I can do much to improve it, i.e, the file names lack consistency, my folder structure is a
 bit of a strange mix of 'clean' and I'd like to add more tests. Equally in terms of functionality
@@ -39,9 +43,11 @@ I may add it to this project for completeness at some stage in the future but as
 got from this project what I wanted to, my time will now be spent on a branch creating a quiz
 product for app store deployment.
 
+## License
+
 I hope that you find this useful and if so, please let me know. You are free to use it for your
 own projects should you wish to do so, but, if you do, please consider a credit. That would be
 appreciated. I take absolutely no responsibility for any loss or damage that is incurred by the use
 of this project and by cloning or forking the branch, you do so at your own risk.
 
-- [Follow me on Medium -->](https://nigelcardozo.medium.com/)
+- [Follow me on Medium --> https://nigelcardozo.medium.com/](https://nigelcardozo.medium.com/)
