@@ -50,4 +50,9 @@ own projects should you wish to do so, but, if you do, please consider a credit.
 appreciated. I take absolutely no responsibility for any loss or damage that is incurred by the use
 of this project and by cloning or forking the branch, you do so at your own risk.
 
+## Follow me on Medium
 - [Follow me on Medium --> https://nigelcardozo.medium.com/](https://nigelcardozo.medium.com/)
+
+## Download my Apps
+- [Elnimijo Games on Google Play](https://play.google.com/store/apps/developer?id=elnimijo+games)
+
