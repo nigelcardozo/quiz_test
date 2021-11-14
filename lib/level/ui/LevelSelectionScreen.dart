@@ -15,6 +15,7 @@ LevelRepository levelRepository = dependencyLocator<LevelRepository>();
 class LevelSelectionScreen extends StatefulWidget {
   static const levelSelectionAppBarTitleKey =
       Key('levelSelectionAppBarTitleKey');
+  static const levelSelectionProgBarKey = Key('levelSelectionProgBarKey');
 
   @override
   _LevelSelectionScreenState createState() => _LevelSelectionScreenState();
@@ -27,7 +28,6 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   void initState() {
     super.initState();
     _setLevelSelectionViewModelRepository();
-    _fetchLevels();
   }
 
   void _setLevelSelectionViewModelRepository() {
@@ -54,7 +54,8 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
           } else {
             // Temporary - Improve this
             return new Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                  key: LevelSelectionScreen.levelSelectionProgBarKey),
             );
           }
         },
