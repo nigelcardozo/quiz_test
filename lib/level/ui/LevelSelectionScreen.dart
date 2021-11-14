@@ -16,6 +16,9 @@ class LevelSelectionScreen extends StatefulWidget {
   static const levelSelectionAppBarTitleKey =
       Key('levelSelectionAppBarTitleKey');
   static const levelSelectionProgBarKey = Key('levelSelectionProgBarKey');
+  static const levelSelectionIconLockedKey = Key('levelSelectionIconLockedKey');
+  static const levelSelectionIconUnlockedKey =
+      Key('levelSelectionIconUnlockedKey');
 
   @override
   _LevelSelectionScreenState createState() => _LevelSelectionScreenState();
@@ -106,10 +109,14 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   }
 
   Icon _generateLockedIcon(BoxConstraints constraint) {
-    return new Icon(Icons.lock, size: constraint.biggest.height);
+    return new Icon(Icons.lock,
+        key: LevelSelectionScreen.levelSelectionIconLockedKey,
+        size: constraint.biggest.height);
   }
 
   Icon _generateUnlockedIcon(BoxConstraints constraint) {
-    return new Icon(Icons.lock_open, size: constraint.biggest.height);
+    return new Icon(Icons.lock_open,
+        key: LevelSelectionScreen.levelSelectionIconUnlockedKey,
+        size: constraint.biggest.height);
   }
 }
