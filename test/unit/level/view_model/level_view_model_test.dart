@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:quiz_test/level/repository/AnswersRepository.dart';
-import 'package:quiz_test/level/view_model/LevelViewModel.dart';
-import 'package:quiz_test/models/Answer.dart';
+import 'package:quiz_test/level/repository/answers_repository.dart';
+import 'package:quiz_test/level/view_model/level_view_model.dart';
+import 'package:quiz_test/models/answer.dart';
 import 'package:test/test.dart';
-import 'LevelViewModelTest.mocks.dart';
+import 'level_view_model_test.mocks.dart';
 
 late LevelViewModel levelViewModel;
 

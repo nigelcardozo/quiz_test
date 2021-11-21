@@ -1,5 +1,5 @@
-import 'package:quiz_test/level/repository/AnswersRepository.dart';
-import 'package:quiz_test/models/Answers.dart';
+import 'package:quiz_test/level/repository/answers_repository.dart';
+import 'package:quiz_test/models/answers.dart';
 
 class LevelViewModel {
   late AnswerRepository answerRepository;

@@ -1,5 +1,5 @@
-import 'package:quiz_test/models/Level.dart';
-import 'package:quiz_test/models/Levels.dart';
+import 'package:quiz_test/models/level.dart';
+import 'package:quiz_test/models/levels.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/answer/ui/AnswerScreen.dart';
-import 'package:quiz_test/level/repository/AnswersRepository.dart';
-import 'package:quiz_test/level/view_model/LevelHelper.dart';
-import 'package:quiz_test/level/view_model/LevelViewModel.dart';
-import 'package:quiz_test/models/Answers.dart';
+import 'package:quiz_test/answer/ui/answer_screen.dart';
+import 'package:quiz_test/level/repository/answers_repository.dart';
+import 'package:quiz_test/level/view_model/level_helper.dart';
+import 'package:quiz_test/level/view_model/level_view_model.dart';
+import 'package:quiz_test/models/answers.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 LevelViewModel levelViewModel = dependencyLocator<LevelViewModel>();

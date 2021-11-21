@@ -1,14 +1,14 @@
 import 'package:get_it/get_it.dart';
-import 'package:quiz_test/constants/dimensions/Dimensions.dart';
-import 'package:quiz_test/level/repository/AnswersRepository.dart';
-import 'package:quiz_test/level/repository/LevelRepository.dart';
-import 'package:quiz_test/level/view_model/LevelHelper.dart';
-import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
-import 'package:quiz_test/level/view_model/LevelViewModel.dart';
+import 'package:quiz_test/constants/dimensions/dimensions.dart';
+import 'package:quiz_test/level/repository/answers_repository.dart';
+import 'package:quiz_test/level/repository/level_repository.dart';
+import 'package:quiz_test/level/view_model/level_helper.dart';
+import 'package:quiz_test/level/view_model/level_selection_view_model.dart';
+import 'package:quiz_test/level/view_model/level_view_model.dart';
 import 'package:quiz_test/main_menu/repository/main_menu_resource_provider.dart';
-import 'package:quiz_test/main_menu/view_model/MainMenuViewModel.dart';
-import 'package:quiz_test/models/Answers.dart';
-import 'package:quiz_test/utils/UiUtils.dart';
+import 'package:quiz_test/main_menu/view_model/main_menu_view_model.dart';
+import 'package:quiz_test/models/answers.dart';
+import 'package:quiz_test/utils/ui_utils.dart';
 
 GetIt dependencyLocator = GetIt.instance;
 

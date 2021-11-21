@@ -5,10 +5,10 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/level/ui/LevelSelectionScreen.dart';
-import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
-import 'package:quiz_test/models/Level.dart';
-import 'package:quiz_test/models/Levels.dart';
+import 'package:quiz_test/level/ui/level_selection_screen.dart';
+import 'package:quiz_test/level/view_model/level_selection_view_model.dart';
+import 'package:quiz_test/models/level.dart';
+import 'package:quiz_test/models/levels.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 import 'level_selection_screen.mocks.dart';

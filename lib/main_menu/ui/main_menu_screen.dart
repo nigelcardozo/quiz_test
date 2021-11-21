@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/about/ui/AboutScreen.dart';
-import 'package:quiz_test/constants/dimensions/Dimensions.dart';
-import 'package:quiz_test/level/ui/LevelSelectionScreen.dart';
+import 'package:quiz_test/about/ui/about_screen.dart';
+import 'package:quiz_test/constants/dimensions/dimensions.dart';
+import 'package:quiz_test/level/ui/level_selection_screen.dart';
 import 'package:quiz_test/main_menu/repository/main_menu_resource_provider.dart';
-import 'package:quiz_test/utils/UiUtils.dart';
+import 'package:quiz_test/utils/ui_utils.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 class MainMenuScreen extends StatefulWidget {

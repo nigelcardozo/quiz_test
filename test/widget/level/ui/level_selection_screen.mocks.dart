@@ -6,9 +6,10 @@ import 'dart:async' as _i5;
 import 'dart:ui' as _i6;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:quiz_test/level/repository/LevelRepository.dart' as _i2;
-import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart' as _i3;
-import 'package:quiz_test/models/Levels.dart' as _i4;
+import 'package:quiz_test/level/repository/level_repository.dart' as _i2;
+import 'package:quiz_test/level/view_model/level_selection_view_model.dart'
+    as _i3;
+import 'package:quiz_test/models/levels.dart' as _i4;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters

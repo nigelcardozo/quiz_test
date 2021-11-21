@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/constants/dimensions/Dimensions.dart';
-import 'package:quiz_test/utils/UiUtils.dart';
+import 'package:quiz_test/constants/dimensions/dimensions.dart';
+import 'package:quiz_test/utils/ui_utils.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 class AnswerScreen extends StatelessWidget {

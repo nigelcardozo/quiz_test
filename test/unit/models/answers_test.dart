@@ -1,5 +1,5 @@
-import 'package:quiz_test/models/Answer.dart';
-import 'package:quiz_test/models/Answers.dart';
+import 'package:quiz_test/models/answer.dart';
+import 'package:quiz_test/models/answers.dart';
 import 'package:test/test.dart';
 
 void main() {

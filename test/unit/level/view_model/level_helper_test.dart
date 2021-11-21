@@ -1,5 +1,5 @@
-import 'package:quiz_test/level/view_model/LevelHelper.dart';
-import 'package:quiz_test/level/view_model/LevelViewModel.dart';
+import 'package:quiz_test/level/view_model/level_helper.dart';
+import 'package:quiz_test/level/view_model/level_view_model.dart';
 import 'package:test/test.dart';
 
 late LevelViewModel levelViewModel;

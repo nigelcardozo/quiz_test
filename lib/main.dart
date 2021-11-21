@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
-import 'package:quiz_test/main_menu/ui/MainMenuScreen.dart';
-import 'package:quiz_test/main_menu/view_model/MainMenuViewModel.dart';
+import 'package:quiz_test/level/view_model/level_selection_view_model.dart';
+import 'package:quiz_test/main_menu/ui/main_menu_screen.dart';
+import 'package:quiz_test/main_menu/view_model/main_menu_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 

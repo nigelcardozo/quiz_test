@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:quiz_test/models/Answer.dart';
+import 'package:quiz_test/models/answer.dart';
 
 class AnswerRepository {
   Future<List<Answer>> fetchAnswers(int level) async {

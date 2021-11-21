@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_test/utils/UiUtils.dart';
+import 'package:quiz_test/utils/ui_utils.dart';
 import 'package:test/test.dart';
 
 void main() {

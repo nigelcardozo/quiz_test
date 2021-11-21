@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/level/repository/LevelRepository.dart';
-import 'package:quiz_test/level/view_model/LevelHelper.dart';
-import 'package:quiz_test/level/view_model/LevelSelectionViewModel.dart';
-import 'package:quiz_test/level/ui/LevelScreen.dart';
-import 'package:quiz_test/models/Levels.dart';
+import 'package:quiz_test/level/repository/level_repository.dart';
+import 'package:quiz_test/level/view_model/level_helper.dart';
+import 'package:quiz_test/level/view_model/level_selection_view_model.dart';
+import 'package:quiz_test/level/ui/level_screen.dart';
+import 'package:quiz_test/models/levels.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 LevelSelectionViewModel levelSelectionViewModel =

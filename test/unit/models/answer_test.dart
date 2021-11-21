@@ -1,4 +1,4 @@
-import 'package:quiz_test/models/Answer.dart';
+import 'package:quiz_test/models/answer.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_test/level/repository/LevelRepository.dart';
-import '../../models/Levels.dart';
+import 'package:quiz_test/level/repository/level_repository.dart';
+import '../../models/levels.dart';
 
 class LevelSelectionViewModel extends ChangeNotifier {
   late LevelRepository levelRepository;

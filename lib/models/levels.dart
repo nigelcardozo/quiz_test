@@ -1,4 +1,4 @@
-import 'package:quiz_test/models/Level.dart';
+import 'package:quiz_test/models/level.dart';
 
 class Levels {
   final Level level;

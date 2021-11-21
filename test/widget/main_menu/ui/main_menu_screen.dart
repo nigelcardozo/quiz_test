@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quiz_test/about/ui/AboutScreen.dart';
-import 'package:quiz_test/level/ui/LevelSelectionScreen.dart';
+import 'package:quiz_test/about/ui/about_screen.dart';
+import 'package:quiz_test/level/ui/level_selection_screen.dart';
 import 'package:quiz_test/main.dart';
-import 'package:quiz_test/main_menu/ui/MainMenuScreen.dart';
+import 'package:quiz_test/main_menu/ui/main_menu_screen.dart';
 import 'package:quiz_test/utils/dependency_locator.dart';
 
 void main() {
